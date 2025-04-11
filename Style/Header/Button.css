@@ -1,0 +1,34 @@
+header > button {
+    position: absolute;
+
+    right: 1.5%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    
+    border-radius: 5px;
+    border: 0;
+
+    font-size: 1.25rem;
+
+    visibility: hidden;
+}
+
+header > button:hover {
+    animation: on-hover-fullscreen-button-animation var(--hover-animation-time) var(--hover-animation-bezier);
+    transform: scale(1.05) translateY(-50%);
+
+    cursor: pointer;
+}
+
+@keyframes on-hover-fullscreen-button-animation {
+    from {
+        transform: scale(1) translateY(-50%);
+    }
+
+    to {
+        transform: scale(1.05) translateY(-50%);
+    }
+}

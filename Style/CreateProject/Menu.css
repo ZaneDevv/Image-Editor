@@ -1,0 +1,76 @@
+/* General menu */
+#create-project-settings {
+    position: fixed;
+
+    width: 30%;
+
+    background-color: var(--dark-color);
+    
+    box-shadow: 1px 1px 7px 1px var(--light-color);
+    border-radius: 8px;
+
+    opacity: 0;
+
+    z-index: 99999;
+
+    left: 50%;
+    top: -20%;
+    transform: translate(-50%, -50%);
+
+    padding: 1%;
+
+    h2 {
+        text-align: center;
+        margin: 0;
+    }
+
+    p[disclaimer] {
+        margin-bottom: 0;
+        font-size: .8rem;
+    }
+}
+
+/* Input */
+#create-project-settings > input[type="number"] {
+    width: 35%;
+
+    background-color: var(--light-color) !important;
+
+    color: var(--dark-color);
+    font-weight: bolder;
+
+    border: 0;
+    border-radius: 4px;
+
+    margin-top: 15px;
+}
+
+/* Close button */
+#create-project-settings > p[close] {
+    position: absolute;
+    
+    right: 0;
+    top: 0;
+
+    font-size: 1.3rem;
+
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+#create-project-settings > p[close]:hover {
+    cursor: pointer;
+
+    animation: close-button-hover var(--hover-animation-time) var(--hover-animation-bezier);
+    color: var(--light-red-color);
+}
+
+@keyframes close-button-hover {
+    from {
+        color: var(--light-color);
+    }
+
+    to {
+        color: var(--light-red-color);
+    }
+}

@@ -1,0 +1,18 @@
+:root {
+    --super-darker-color: #1d1d1d;
+    --darker-color: #2a2a2a;
+    --dark-color: #313131;
+    --light-color: #dfdfdf;
+
+    --light-blue-color: #a7c9f5;
+    --dark-blue-color: #1252a7;
+
+    --dark-red-color: #f1424e;
+    --light-red-color: #fa7a82;
+
+    --light-green-color: #caf5a7;
+    --dark-green-color: #036610;
+
+    --hover-animation-time: .5s;
+    --hover-animation-bezier: cubic-bezier(0.19, 1, 0.22, 1);
+}

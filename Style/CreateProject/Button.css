@@ -1,0 +1,45 @@
+#create-project-settings > button {
+    width: 100%;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+
+    border: 0;
+    border-radius: 8px;
+
+    background-color: var(--light-green-color);
+    color: var(--dark-color);
+
+    font-size: 1.2rem;
+
+    animation: unhover-create-button-animation var(--hover-animation-time) var(--hover-animation-bezier);
+    transform: scale(1);
+}
+
+#create-project-settings > button:hover {
+    animation: hover-create-button-animation var(--hover-animation-time) var(--hover-animation-bezier);
+    transform: scale(1.025);
+
+    cursor: pointer;
+}
+
+@keyframes hover-create-button-animation {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.025);
+    }
+}
+
+@keyframes unhover-create-button-animation {
+    from {
+        transform: scale(1.025);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}

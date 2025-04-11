@@ -1,0 +1,37 @@
+.layers {
+    width: 80%;
+    height: 20px;
+
+    padding: 10px;
+
+    position: relative;
+
+    border-top: 1px solid var(--darker-color);
+
+    margin-left: auto;
+    margin-right: auto;
+
+    flex: 0 0 auto;
+}
+
+.layers:hover {
+    cursor: pointer;
+}
+
+.layers > * {
+    position: absolute;
+
+    top: 50%;
+    transform: translateY(50%);
+
+    margin: 0;
+}
+
+.layers span {
+    top: 25%;
+}
+
+.layers p {
+    width: 40%;
+    left: 35%;
+}

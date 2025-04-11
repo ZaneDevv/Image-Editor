@@ -1,0 +1,49 @@
+#other-options > div[layers] > h3 {
+    text-align: center;
+
+    top: 5px;
+
+    margin-top: 5px;
+    margin-bottom: 0;
+    
+    font-size: 1.5rem;
+}
+
+#other-options > div[layers] > hr {
+    margin: 0;
+
+    border: .5px solid var(--light-color);
+    width: 80%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    opacity: .5;
+}
+
+#layers-container {
+    width: 100%;
+    height: 86%;
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    box-sizing: border-box;
+}
+
+#other-options {
+    width: 20%;
+    height: 100%;
+    min-width: 150px;
+
+    box-shadow: 1px 0px 5px 0px var(--light-color);
+}
+
+#other-options > div[layers] {
+    height: 100%;
+    width: 100%;
+    background-color: var(--dark-color);
+}

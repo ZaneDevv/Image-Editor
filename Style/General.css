@@ -1,0 +1,57 @@
+body, html {
+    height: 100%;
+}
+
+body {
+    background-color: var(--dark-color);
+    margin: 0;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-width: 100vh;
+
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, b, i, strong, em, label,
+span, a, button, input, img {
+    color: var(--light-color);
+    font-family: "Dancing Script", cursive;
+    text-decoration: none;
+}
+
+a[link] {
+    color: var(--light-blue-color);
+}
+
+#file-input {
+    visibility: hidden;
+}
+
+#make-screen-darker {
+    z-index: 500;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: black;
+
+    opacity: 0;
+    visibility: hidden;
+
+    position: absolute;
+}
+
+/* Remove annoying drags and selections */
+* {
+    user-drag: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}

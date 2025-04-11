@@ -1,0 +1,92 @@
+Date : 2025-04-10 11:24:30
+Directory : /home/alvaro/Documents/AyalaTasks/Webs/EditingImages
+Total : 42 files,  885 codes, 35 comments, 330 blanks, all 1250 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| CSS        |         15 |        407 |          3 |        155 |        565 |
+| JavaScript |         15 |        358 |         22 |        132 |        512 |
+| HTML       |          1 |        108 |         10 |         42 |        160 |
+| XML        |         10 |         10 |          0 |          0 |         10 |
+| Markdown   |          1 |          2 |          0 |          1 |          3 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                             | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                |         42 |        885 |         35 |        330 |      1,250 |
+| . (Files)                                                                                                        |          2 |        110 |         10 |         43 |        163 |
+| Images                                                                                                           |         10 |         10 |          0 |          0 |         10 |
+| Images/CreateProject                                                                                             |          2 |          2 |          0 |          0 |          2 |
+| Images/Management                                                                                                |          2 |          2 |          0 |          0 |          2 |
+| Images/Tools                                                                                                     |          4 |          4 |          0 |          0 |          4 |
+| Images/Zoom                                                                                                      |          2 |          2 |          0 |          0 |          2 |
+| Scripts                                                                                                          |         15 |        358 |         22 |        132 |        512 |
+| Scripts (Files)                                                                                                  |          2 |          9 |          1 |          2 |         12 |
+| Scripts/CreateProject                                                                                            |          4 |        111 |          4 |         43 |        158 |
+| Scripts/InProject                                                                                                |          6 |        206 |         13 |         78 |        297 |
+| Scripts/InProject (Files)                                                                                        |          4 |        138 |         10 |         50 |        198 |
+| Scripts/InProject/Controls                                                                                       |          2 |         68 |          3 |         28 |         99 |
+| Scripts/Utils                                                                                                    |          3 |         32 |          4 |          9 |         45 |
+| Style                                                                                                            |         15 |        407 |          3 |        155 |        565 |
+| Style (Files)                                                                                                    |          2 |         46 |          0 |         15 |         61 |
+| Style/Body                                                                                                       |          5 |        148 |          0 |         55 |        203 |
+| Style/Body (Files)                                                                                               |          3 |         88 |          0 |         31 |        119 |
+| Style/Body/Layers                                                                                                |          2 |         60 |          0 |         24 |         84 |
+| Style/CreateProject                                                                                              |          2 |         85 |          3 |         34 |        122 |
+| Style/Footer                                                                                                     |          1 |         15 |          0 |          7 |         22 |
+| Style/Header                                                                                                     |          3 |         80 |          0 |         34 |        114 |
+| Style/Project                                                                                                    |          2 |         33 |          0 |         10 |         43 |
++------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                         | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Images/CreateProject/Create.svg                             | XML        |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Images/CreateProject/OpenFolder.svg                         | XML        |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Images/Management/Redo.svg                                  | XML        |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Images/Management/Undo.svg                                  | XML        |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Images/Tools/InsertImage.svg                                | XML        |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Images/Tools/InsertText.svg                                 | XML        |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Images/Tools/Resize.svg                                     | XML        |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Images/Tools/Rotate.svg                                     | XML        |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Images/Zoom/ZoomIn.svg                                      | XML        |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Images/Zoom/ZoomOut.svg                                     | XML        |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/README.md                                                   | Markdown   |          2 |          0 |          1 |          3 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/CreateProject/CreateNewProjectButton.js             | JavaScript |         33 |          1 |         13 |         47 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/CreateProject/CreateProject.js                      | JavaScript |         22 |          0 |          8 |         30 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/CreateProject/CreateProjectFromScratchMenuToggle.js | JavaScript |         37 |          2 |         14 |         53 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/CreateProject/UploadFile.js                         | JavaScript |         19 |          1 |          8 |         28 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/InProject/ActivateProject.js                        | JavaScript |          5 |          2 |          1 |          8 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/InProject/Controls/Move.js                          | JavaScript |         29 |          3 |         12 |         44 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/InProject/Controls/Zoom.js                          | JavaScript |         39 |          0 |         16 |         55 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/InProject/Draggable.js                              | JavaScript |         22 |          0 |          8 |         30 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/InProject/InsertText.js                             | JavaScript |         32 |          3 |         11 |         46 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/InProject/Layers.js                                 | JavaScript |         79 |          5 |         30 |        114 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/Info.js                                             | JavaScript |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/Utils/Delay.js                                      | JavaScript |          1 |          0 |          0 |          1 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/Utils/Maths.js                                      | JavaScript |         15 |          2 |          6 |         23 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/Utils/Mouse.js                                      | JavaScript |         16 |          2 |          3 |         21 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Scripts/WarningMessage.js                                   | JavaScript |          8 |          1 |          2 |         11 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Body/ImageContent.css                                 | CSS        |         47 |          0 |         15 |         62 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Body/Layers/Layers.css                                | CSS        |         25 |          0 |         10 |         35 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Body/Layers/LayersMenu.css                            | CSS        |         35 |          0 |         14 |         49 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Body/Main.css                                         | CSS        |          4 |          0 |          0 |          4 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Body/ToolsMenu.css                                    | CSS        |         37 |          0 |         16 |         53 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/CreateProject/Button.css                              | CSS        |         34 |          0 |         12 |         46 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/CreateProject/Menu.css                                | CSS        |         51 |          3 |         22 |         76 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Footer/Main.css                                       | CSS        |         15 |          0 |          7 |         22 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/General.css                                           | CSS        |         33 |          0 |         11 |         44 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Header/Button.css                                     | CSS        |         25 |          0 |          9 |         34 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Header/Main.css                                       | CSS        |         20 |          0 |          7 |         27 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Header/Zoom.css                                       | CSS        |         35 |          0 |         18 |         53 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Project/Canvas.css                                    | CSS        |         16 |          0 |          6 |         22 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Project/GeneralElements.css                           | CSS        |         17 |          0 |          4 |         21 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/Style/Variables.css                                         | CSS        |         13 |          0 |          4 |         17 |
+| /home/alvaro/Documents/AyalaTasks/Webs/EditingImages/index.html                                                  | HTML       |        108 |         10 |         42 |        160 |
+| Total                                                                                                            |            |        885 |         35 |        330 |      1,250 |
++------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
