@@ -1,0 +1,1 @@
+const GetCSSvariableValue = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();

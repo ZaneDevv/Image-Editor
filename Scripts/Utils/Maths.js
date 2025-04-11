@@ -20,4 +20,8 @@ function Sign(x) {
 
 function Clamp(x, min, max) {
     return x < min ? min : x > max ? max : x;
-} 
+}
+
+function Abs(x) {
+    return x < 0 ? -x : x;
+}

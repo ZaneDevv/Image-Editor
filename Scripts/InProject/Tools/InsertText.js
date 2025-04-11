@@ -8,7 +8,7 @@ function EnableInsertText() {
 
     const Color = document.getElementById("color");
 
-    InsertTextButton.addEventListener("click", function() {
+    function InsertText() {
         // Inserting text already selected, unselect it
         if (CurrentToolSelected == InserTextToolName) {
             CurrentToolSelected = null;
@@ -62,5 +62,11 @@ function EnableInsertText() {
             Body.style.cursor = "default";
             CurrentToolSelected = null;
         })
+    }
+
+    InsertTextButton.addEventListener("click", InsertText);
+    window.addEventListener("keyup", function(event) {
+      if (event.key != "t") { return; }
+      InsertText();  
     })
 }
