@@ -3,19 +3,7 @@
 }
 
 #canvas *:hover {
-    animation: hover-over-element-border-animation var(--hover-animation-time) var(--hover-animation-bezier);
-
     border-color: var(--light-blue-color);
     border-style: solid;
     border-width: 2px;
-}
-
-@keyframes hover-over-element-border-animation {
-    from {
-        border-width: 0;
-    }
-
-    to {
-        border-width: 2px;
-    }
 }
