@@ -108,7 +108,7 @@ function EnableLayerToBeDragged(layerIndex) {
 
             Layers[closestLayerIndex] = currentLayerData;
             Layers[closestLayerIndex].NumberLayerText.innerHTML = `#${closestLayerIndex + 1}`
-            Layers[closestLayerIndex].LayerDiv.style.zIndex = closestLayerIndex + 1;
+            Layers[closestLayerIndex].LayerDiv.style.zIndex = closestLayerIndex;
             Layers[closestLayerIndex].LayerDiv.style.order = closestLayerIndex + 1;
             Layers[closestLayerIndex].LayerDiv.style.opacity = 1;
 
