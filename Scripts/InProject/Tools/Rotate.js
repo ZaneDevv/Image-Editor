@@ -38,7 +38,11 @@ function EnableRotationTool() {
                 }
 
                 let transformAfterRotation = currentRotation.split(")"); 
-                let currentTheta = parseInt(transformAfterRotation[0], 0xA);
+                let currentTheta = parseFloat(transformAfterRotation[0], 0xA);
+
+                if (currentTheta < 0) {
+                    currentTheta = 2 * Math.PI - currentTheta;
+                }
 
                 LayerSelected.Element.style.transform = `rotate(${currentTheta + theta}rad) translateY(-50%)`;
             })
