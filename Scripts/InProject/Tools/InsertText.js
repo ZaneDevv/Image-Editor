@@ -55,36 +55,10 @@ function EnableInsertText() {
             NewText.style.fontFamily = "Courier New";
             NewText.style.position = "absolute";
             NewText.style.transform = "translateY(-50%)";
+            NewText.contentEditable = "true";
 
             Canvas.appendChild(NewText);
-            
-            // Editing text behaviour
-            TextInput.focus();
-
-            function UpdateText() {
-                NewText.innerHTML = TextInput.value;
-            }
-            function FinishEditing(event) {
-                if (event.key != "Enter") { return; }
-
-                TextInput.removeEventListener("input", UpdateText);
-                TextInput.removeEventListener("keydown", FinishEditing);
-                TextInput.blur();
-
-                TextInput.value = "";
-
-                canInsertText = true;
-            }
-
-            TextInput.addEventListener("input", UpdateText);
-            TextInput.addEventListener("keyup", FinishEditing);
-            this.window.addEventListener("mouseup", () => {
-                
-
-                this.windows.removeEventListener("mouseup", arguments.callee);
-            })
-            
-            
+            NewText.focus();
 
             AddLayer("New text", NewText);
             SetAsDraggable(NewText);
