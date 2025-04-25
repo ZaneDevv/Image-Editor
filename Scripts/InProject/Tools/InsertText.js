@@ -10,19 +10,25 @@ function EnableInsertText() {
 
     const Color = document.getElementById("color");
 
+    let canInsertText = true;
+
     function InsertText() {
         // Inserting text already selected, unselect it
         if (CurrentToolSelected == InserTextToolName) {
             CurrentToolSelected = null;
             Body.style.cursor = "default";
-
+            
             return;
         }
+
+        if (!canInsertText) { return; }
+        canInsertText = false;
 
         CurrentToolSelected = InserTextToolName;
         Body.style.cursor = "text";
 
         window.addEventListener("click", function() {
+
             // If the user selected a different tools previusly, doesn't insert text
             if (CurrentToolSelected != InserTextToolName) {
                 this.window.removeEventListener("click", arguments.callee);
@@ -49,14 +55,36 @@ function EnableInsertText() {
             NewText.style.fontFamily = "Courier New";
             NewText.style.position = "absolute";
             NewText.style.transform = "translateY(-50%)";
-            
-            TextInput.focus();
-            TextInput.addEventListener("input", function(event) {
-                console.log("input");
-                NewText.innerHTML = TextInput.value;
-            });
-            
+
             Canvas.appendChild(NewText);
+            
+            // Editing text behaviour
+            TextInput.focus();
+
+            function UpdateText() {
+                NewText.innerHTML = TextInput.value;
+            }
+            function FinishEditing(event) {
+                if (event.key != "Enter") { return; }
+
+                TextInput.removeEventListener("input", UpdateText);
+                TextInput.removeEventListener("keydown", FinishEditing);
+                TextInput.blur();
+
+                TextInput.value = "";
+
+                canInsertText = true;
+            }
+
+            TextInput.addEventListener("input", UpdateText);
+            TextInput.addEventListener("keyup", FinishEditing);
+            this.window.addEventListener("mouseup", () => {
+                
+
+                this.windows.removeEventListener("mouseup", arguments.callee);
+            })
+            
+            
 
             AddLayer("New text", NewText);
             SetAsDraggable(NewText);
