@@ -61,6 +61,7 @@
         <script src="./Scripts/InProject/Draggable.js" defer></script>
         <script src="./Scripts/InProject/Layers.js" defer></script>
         <script src="./Scripts/InProject/Tools/InsertText.js" defer></script>
+        <script src="./Scripts/InProject/Tools/InsertImage.js" defer></script>
         <script src="./Scripts/InProject/Tools/Rotate.js" defer></script>
         <script src="./Scripts/InProject/Tools/Color.js" defer></script>
         <script src="./Scripts/InProject/ActivateProject.js" defer></script>
@@ -116,7 +117,7 @@
         <main>
             <aside id="tools">
                 <img id="insert-text" src="./Images/Tools/InsertText.svg" alt="Insert text" title="Insert text (T)">
-                <img src="./Images/Tools/InsertImage.svg" alt="Insert image" title="Insert image">
+                <img id="insert-image" src="./Images/Tools/InsertImage.svg" alt="Insert image" title="Insert image (Ctrl + I + I)">
                 <img src="./Images/Tools/Resize.svg" alt="Scale" title="Scale (S)">
                 <img id="rotate" src="./Images/Tools/Rotate.svg" alt="Rotate" title="Rotate (R)">
 
@@ -160,5 +161,6 @@
         </footer>
 
         <input type="file" id="file-input" accept="image/*" />
+        <input type="text" id="text-input" />
     </body>
 </html>

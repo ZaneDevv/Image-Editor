@@ -5,6 +5,7 @@ function EnableProjectEditing() {
     
     /* Enable tools */
     EnableInsertText();
+    EnableInsertImage();
     EnableRotationTool();
     EnableColorSelection();
 }

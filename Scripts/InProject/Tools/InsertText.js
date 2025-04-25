@@ -1,6 +1,8 @@
 const InserTextToolName = "Insert Text";
 
 function EnableInsertText() {
+    const TextInput = document.getElementById("text-input");
+
     const InsertTextButton = document.getElementById("insert-text");
     const Canvas = document.getElementById("canvas");
 
@@ -47,7 +49,12 @@ function EnableInsertText() {
             NewText.style.fontFamily = "Courier New";
             NewText.style.position = "absolute";
             NewText.style.transform = "translateY(-50%)";
-            NewText.innerHTML = 'holaaaa';
+            
+            TextInput.focus();
+            TextInput.addEventListener("input", function(event) {
+                console.log("input");
+                NewText.innerHTML = TextInput.value;
+            });
             
             Canvas.appendChild(NewText);
 

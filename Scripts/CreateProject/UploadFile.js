@@ -7,6 +7,8 @@
 
 
     FileInput.addEventListener("change", (event) => {
+        if (IsInProject) { return; }
+
         const file = event.target.files[0]; // Checking the file
         
         const image = new Image();
@@ -16,6 +18,8 @@
             image.onload = function() {
                 const width = image.width;
                 const height = image.height;
+
+                isProjectCreated = true;
 
                 CreateProject(width, height, image);
             }
