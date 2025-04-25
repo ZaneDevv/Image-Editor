@@ -18,5 +18,7 @@ Feautures:
 
 When you need to create a new project, you have two clar options: either you create a new canvas from scratch by specifing its width and height or you import a image you have downloaded on your device.
 
-![image](https://github.com/user-attachments/assets/4468edc0-4acf-40d9-bad6-5014bef40b04)
-![image](https://github.com/user-attachments/assets/3582169d-cea3-406f-bb36-35afaefe36fb)
+<div style="text-align: center;">
+  <img src="https://github.com/user-attachments/assets/4468edc0-4acf-40d9-bad6-5014bef40b04" style="border-radius: 8px; margin: 10px;" />
+  <img src="https://github.com/user-attachments/assets/3582169d-cea3-406f-bb36-35afaefe36fb" style="border-radius: 8px; margin: 10px;" />
+</div>
