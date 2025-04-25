@@ -7,6 +7,9 @@ const LayersContainer = document.getElementById("layers-container");
 function RemoveLayer(layer) {
     if (layer.Name == "Background") { return; } // Doesn't allow to remove the background
 
+    // Don't remove layer if the user is writing
+    if (layer.Element.contentEditable == "true") { return; }
+
     LayersContainer.removeChild(layer.LayerDiv);
     document.getElementById("canvas").removeChild(layer.Element);
 

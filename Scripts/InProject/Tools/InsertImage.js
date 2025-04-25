@@ -65,7 +65,7 @@ function EnableInsertImage() {
                             lastTimeIButtonWasPressed = 0;
                         }
                     }
-                    lastTimeIButtonWasPressed = CurrentTime
+                    lastTimeIButtonWasPressed = CurrentTime;
                 }
 
                 break;

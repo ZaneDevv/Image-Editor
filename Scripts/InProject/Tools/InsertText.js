@@ -64,9 +64,31 @@ function EnableInsertText() {
             SetAsDraggable(NewText);
             
             // Able to select tis layer by clicking on the actual object in the canvas
+            // If the user click twice, the layer will be unselected and the user starts editing the text
+            let lastTimeClicked = 0;
+
             NewText.addEventListener("click", function() {
+                const CurrentTime = (new Date()).getTime();
+
+                if (lastTimeClicked > 0) {
+                    const Difference = CurrentTime - lastTimeClicked;
+
+                    if (Difference < 300) { // If the user clicked quick enough, the text will be in edit mode
+                        NewText.contentEditable = "true";
+                        NewText.focus();
+
+                        return;
+                    }
+                }
+                
+                lastTimeClicked = CurrentTime;
                 SelectLayer(NewText.style.zIndex - 1);
             })
+
+            // When the user unfocuses the text, it will no longer editable until you click twice over it
+            NewText.addEventListener("blur", function() {
+                NewText.contentEditable = "false";
+            });
             
             Body.style.cursor = "default";
             CurrentToolSelected = null;
