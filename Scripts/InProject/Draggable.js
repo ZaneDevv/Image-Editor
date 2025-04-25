@@ -1,4 +1,6 @@
 function SetAsDraggable(object) {
+    const Body = document.getElementsByTagName("body")[0];
+
     let MouseStartingX = MousePosition.x;
     let MouseStartingY = MousePosition.y;
 
@@ -20,6 +22,8 @@ function SetAsDraggable(object) {
         MouseStartingX = MousePosition.x;
         MouseStartingY = MousePosition.y;
 
+        Body.style.cursor = "grab";
+
         window.addEventListener("mousemove", Drag); // Initializating behaviour
     })
 
@@ -28,5 +32,7 @@ function SetAsDraggable(object) {
         if (!(event.button === 0)) { return; } // Left button
 
         window.removeEventListener("mousemove", Drag);
+
+        Body.style.cursor = "default";
     })
 }
