@@ -12,6 +12,8 @@ Feautures:
     <li>Zoom in/out</li>
 </ul>
 
+#
+
 ### Creating project
 
 When you need to create a new project, you have two clar options: either you create a new canvas from scratch by specifing its width and height or you import a image you have downloaded on your device.
