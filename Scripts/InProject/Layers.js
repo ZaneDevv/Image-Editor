@@ -133,7 +133,7 @@ function EnableLayerToBeDragged(layerIndex) {
         DraggableLayer.style.border = 0;
         DraggableLayer.style.transform = "translateY(-50%)";
         DraggableLayer.style.backgroundColor = GetCSSvariableValue('--dark-color');
-        DraggableLayer.style.width = LayersContainer.parentElement.parentElement.style.width, 0xA;
+        DraggableLayer.style.width = "18%";
 
         LayersContainer.appendChild(DraggableLayer);
 
