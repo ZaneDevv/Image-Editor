@@ -212,3 +212,18 @@ document.addEventListener("keyup", function(event) {
         default: break;
     }
 });
+
+
+// If mouses's click on anywhere that is neither an object nor a layer, the current selected layer must be unselected 
+document.addEventListener("mouseup", function() {
+
+    // Don't unselect the layer if user's clicked on the canvas
+    if (MousePosition.x > CanvasRect.left && MousePosition.x < CanvasRect.right && MousePosition.y > CanvasRect.top && MousePosition.x < CanvasRect.bottom) {
+        return;
+    }
+
+
+    // Don't unselect the layer if user's clicked on a layer
+
+    UnselectLayer();
+})
