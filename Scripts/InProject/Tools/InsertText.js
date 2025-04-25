@@ -1,8 +1,6 @@
 const InserTextToolName = "Insert Text";
 
 function EnableInsertText() {
-    const TextInput = document.getElementById("text-input");
-
     const InsertTextButton = document.getElementById("insert-text");
     const Canvas = document.getElementById("canvas");
 
