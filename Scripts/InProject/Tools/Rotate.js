@@ -2,7 +2,6 @@ const RotateToolName = "Rotate";
 
 function EnableRotationTool() {
     const RotateButton = document.getElementById("rotate");
-    const Body = document.getElementsByTagName("body")[0];
 
     let isRotating = false;
 
@@ -59,6 +58,8 @@ function EnableRotationTool() {
             CurrentToolSelected = null;
             return;
         }
+
+        CurrentToolSelected = RotateToolName;
 
         if (!isRotating){
             window.addEventListener("mousedown", OnMouseIsDown);

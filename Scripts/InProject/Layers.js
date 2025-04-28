@@ -41,7 +41,6 @@ function SelectLayer(layerIndex) {
         return;
     }
 
-    console.log(layerIndex)
     if (layerIndex < 0 || layerIndex >= Layers.length) { return; } // Checking if the index exists
 
     layerSelectedIndex = layerIndex;

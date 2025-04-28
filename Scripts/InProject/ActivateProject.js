@@ -8,4 +8,5 @@ function EnableProjectEditing() {
     EnableInsertImage();
     EnableRotationTool();
     EnableColorSelection();
+    EnableScaleTool();
 }
