@@ -79,6 +79,6 @@ On the left-hand side of the screen there is a color button as well. Once you cl
 
 #
 
-### Warning messages when you tried to either close or refresh the window
+### Warning messages when you try to either close or refresh the window
 
 When you are working, it is pretty annoying pressing either the refresh button or the close button loosing all the work done. To avoid it, I added a message when you do it asking wether you really meant to do that task, giving the possibility to cancel it and don't loose the whole process.
