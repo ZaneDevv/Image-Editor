@@ -12,7 +12,7 @@ function SetAsDraggable(object) {
         MouseStartingY = MousePosition.y;
 
         let currentLeft = parseInt(object.style.left);
-        let currentTop = parseInt(object.style.left);
+        let currentTop = parseInt(object.style.top);
         
         // Fixing possible NaN
         if (isNaN(currentLeft)) {
