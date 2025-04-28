@@ -30,7 +30,7 @@ function EnableInsertImage() {
 
                 // Able to select tis layer by clicking on the actual object in the canvas
                 image.addEventListener("click", function() {
-                    SelectLayer(NewText.style.zIndex - 1);
+                    SelectLayer(image.style.zIndex - 1);
                 })
             }
 

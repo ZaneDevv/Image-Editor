@@ -11,8 +11,20 @@ function SetAsDraggable(object) {
         MouseStartingX = MousePosition.x;
         MouseStartingY = MousePosition.y;
 
-        object.style.left = `${parseInt(object.style.left) + differenceX}px`;
-        object.style.top = `${parseInt(object.style.top) + differenceY}px`;
+        let currentLeft = parseInt(object.style.left);
+        let currentTop = parseInt(object.style.left);
+        
+        // Fixing possible NaN
+        if (isNaN(currentLeft)) {
+            currentLeft = 0;
+        }
+
+        if (isNaN(currentTop)) {
+            currentTop = 0;
+        }
+
+        object.style.left = `${currentLeft + differenceX}px`;
+        object.style.top = `${currentTop + differenceY}px`;
     }
 
     // Start dragging
