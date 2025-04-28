@@ -14,8 +14,9 @@ Feautures:
     <li>Layers</li>
     <li>Dragging</li>
     <li>Rotate</li>
-    <li>Zoom in/out</li>
     <li>Color</li>
+    <li>Zoom in/out</li>
+    <li>Moving canvas</li>
     <li>Warning messages when you are editing an image and you tried to either close or refresh the window</li>
 </ul>
 
@@ -65,6 +66,12 @@ By either pressing the R key on the keyboard or clicking on the rotate button on
 
 #
 
+### Color
+
+On the left-hand side of the screen there is a color button as well. Once you click on it, you can pick a color so the next text you insert on the canvas will be in that color. Additionally, if when you are picking a color you are also selecting a layer with text, the color of that text will change to that new color.
+
+#
+
 ### Zoom in and out
 
 If you use the wheel of the mouse while the shift button is being pressed, you will zoom in or out depending of the directing you are moving the wheel of the mouse.
@@ -73,9 +80,9 @@ Between these buttons, there is a number that represents how much you are zoomin
 
 #
 
-### Color
+### Moving canvas
 
-On the left-hand side of the screen there is a color button as well. Once you click on it, you can pick a color so the next text you insert on the canvas will be in that color. Additionally, if when you are picking a color you are also selecting a layer with text, the color of that text will change to that new color.
+When you hold the click on the mouse's wheel button and you move the mouse, you will see that you will move around the canvas.
 
 #
 
