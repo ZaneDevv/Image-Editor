@@ -17,6 +17,7 @@ Feautures:
     <li>Color</li>
     <li>Zoom in/out</li>
     <li>Moving canvas</li>
+    <li>Copy & paste</li>
     <li>Warning messages when you are editing an image and you tried to either close or refresh the window</li>
 </ul>
 
@@ -83,6 +84,12 @@ Between these buttons, there is a number that represents how much you are zoomin
 ### Moving canvas
 
 When you hold the click on the mouse's wheel button and you move the mouse, you will see that you will move around the canvas.
+
+#
+
+### Copy & paste
+
+As most of the softwares, I added the possibility of copying `(Control + C)` a selected element and paste it `(Control + V)` to duplicate it.
 
 #
 
