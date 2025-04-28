@@ -86,6 +86,7 @@ function EnableInsertText() {
             // When the user unfocuses the text, it will no longer editable until you click twice over it
             NewText.addEventListener("blur", function() {
                 NewText.contentEditable = "false";
+                canInsertText = true;
             });
             
             Body.style.cursor = "default";
