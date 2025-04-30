@@ -98,14 +98,16 @@ function EnableLayerToBeDragged(layerIndex) {
 
             for (let i = layerIndex + 1; i <= closestLayerIndex; i++) {
                 Layers[i].LayerDiv.style.order = i - 1;
-                Layers[i].LayerDiv.style.zIndex = i - 1;
+                Layers[i].Element.style.zIndex = i;
                 Layers[i].NumberLayerText.innerHTML = `#${i}`;
                 Layers[i].LayerDiv.style.opacity = 1;
+
+                Layers[i - 1] = Layers[i];
             }
             
             Layers[closestLayerIndex] = currentLayerData;
             Layers[closestLayerIndex].LayerDiv.style.order = closestLayerIndex;
-            Layers[closestLayerIndex].LayerDiv.style.zIndex = closestLayerIndex;
+            Layers[closestLayerIndex].Element.style.zIndex = closestLayerIndex + 1;
             Layers[closestLayerIndex].NumberLayerText.innerHTML = `#${closestLayerIndex + 1}`; 
             Layers[closestLayerIndex].LayerDiv.style.opacity = 1;
 
