@@ -28,6 +28,12 @@ function RemoveLayer(layer) {
 function UnselectLayer() {
     if (LayerSelected === null) { return; } // Checking if there is a layer selected
 
+    if (CurrentToolSelected == "Rotate" || CurrentToolSelected == "Scale") {
+        CurrentToolSelected = null;
+    }
+
+    LayerSelected.Element.children[0].remove();
+
     LayerSelected.Element.style.border = "0";
     LayerSelected.LayerDiv.style.backgroundColor = "#00000000";
 
