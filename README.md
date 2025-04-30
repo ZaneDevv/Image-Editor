@@ -53,6 +53,7 @@ You also can import an image from your device by press quickly twice the I butto
 On the left-hand side of the screen, you will see a menu with the title "Layers" which is where you can work with the layers as you might guessed.
 You can select each one and see with a blue border which is the object that this layer belongs to. Also, you can click on the object in the canvas to select it and work with it, being both the object and its layers highlighted.
 By selecting the layer, you can drag by moving the mouse after keep clicking on it for a second and remove it by pressing the delete ket on the keyboard.
+I also added a feature that allows you to move through the layers by using the arrow keys on your keyboard very easily.
 
 #
 
