@@ -1,4 +1,6 @@
 function EnableProjectEditing() {
+    EnableFullScreenButton();
+
     /* Enable controls */
     EnableZoom();
     EnableMovement();

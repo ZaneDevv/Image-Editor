@@ -1,0 +1,15 @@
+#see-image-full-screen {
+    z-index: 99999;
+
+    width: 100%;
+    height: 95%;
+
+    background-color: var(--dark-color);
+    visibility: hidden;
+
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

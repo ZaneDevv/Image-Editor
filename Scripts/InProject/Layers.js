@@ -68,29 +68,24 @@ function EnableLayerToBeDragged(layerIndex) {
 
         let DraggableLayer = null;
 
-        // Checking if the user released the click
         window.addEventListener("mouseup", function() {
             stopClick = true;
-    
-            if (OnMove == null) { return; }
+
+            if (OnMove == null || DraggableLayer == null) { return; }
 
             window.removeEventListener("mousemove", OnMove);
             window.removeEventListener("mouseup", arguments.callee);
 
-
-            // Checking the new position
             const DraggingLayerRect = DraggableLayer.getBoundingClientRect();
 
             let closestLayerIndex = 0;
             let closestDistance = Infinity;
 
-            // We check which one is the closest one ignoring the background
             for (let i = 1; i < Layers.length; i++) {
                 const CurrentLayer = Layers[i].LayerDiv;
                 const CurrentLayerRect = CurrentLayer.getBoundingClientRect();
 
-                const distanceY = Abs(parseInt(CurrentLayerRect.top) - parseInt(DraggingLayerRect.bottom));
-                console.log(distanceY, i)
+                const distanceY = Math.abs(parseInt(CurrentLayerRect.top) - parseInt(DraggingLayerRect.bottom));
 
                 if (distanceY < closestDistance) {
                     closestLayerIndex = i;
@@ -102,23 +97,24 @@ function EnableLayerToBeDragged(layerIndex) {
             let currentLayerData = Layers[layerIndex];
 
             for (let i = layerIndex + 1; i <= closestLayerIndex; i++) {
-                Layers[i].LayerDiv.style.order = i;
+                Layers[i].LayerDiv.style.order = i - 1;
                 Layers[i].LayerDiv.style.zIndex = i - 1;
                 Layers[i].NumberLayerText.innerHTML = `#${i}`;
-                Layers[i] = Layers[i - 1];
+                Layers[i].LayerDiv.style.opacity = 1;
             }
-
+            
             Layers[closestLayerIndex] = currentLayerData;
-            Layers[closestLayerIndex].NumberLayerText.innerHTML = `#${closestLayerIndex + 1}`
+            Layers[closestLayerIndex].LayerDiv.style.order = closestLayerIndex;
             Layers[closestLayerIndex].LayerDiv.style.zIndex = closestLayerIndex;
-            Layers[closestLayerIndex].LayerDiv.style.order = closestLayerIndex + 1;
+            Layers[closestLayerIndex].NumberLayerText.innerHTML = `#${closestLayerIndex + 1}`; 
             Layers[closestLayerIndex].LayerDiv.style.opacity = 1;
 
             LayersContainer.removeChild(DraggableLayer);
-        })
+        });
 
         let t = 0;
 
+        // Wait for a small time to see if dragging actually starts
         while (!stopClick && t < 1) {
             await delay(.1);
             t += .1;
@@ -136,28 +132,31 @@ function EnableLayerToBeDragged(layerIndex) {
 
         LayersContainer.appendChild(DraggableLayer);
 
+        // Set the opacity of the original layer while dragging
         Layers[layerIndex].LayerDiv.style.opacity = .25;
 
-        // Drag layer behaviour when mouse moves
+        // Drag layer behavior when mouse moves
         OnMove = function() {
             DraggableLayer.style.top = `${MousePosition.y}px`;
-        }
+        };
 
         window.addEventListener("mousemove", OnMove);
-    })
+    });
 }
 
-function AddLayer(name, object) {
-    object.style.zIndex = Layers.length + 1;
 
-    // Creating layer
+function AddLayer(name, object) {
+    const newLayerIndex = Layers.length;
+
+    object.style.zIndex = newLayerIndex + 1; 
+
     const NewLayer = document.createElement("div");
     NewLayer.className = "layers";
-    NewLayer.title = `Layer #${Layers.length + 1}: ${name}`;
-    NewLayer.style.order = Layers.length;
+    NewLayer.title = `Layer #${newLayerIndex + 1}: ${name}`;
+    NewLayer.style.order = newLayerIndex; 
 
     const NumberOfLayer = document.createElement("span");
-    NumberOfLayer.innerHTML = `#${Layers.length + 1}`;
+    NumberOfLayer.innerHTML = `#${newLayerIndex + 1}`;
     NumberOfLayer.style.top = '0';
 
     const LayerName = document.createElement("p");
@@ -169,22 +168,20 @@ function AddLayer(name, object) {
 
     LayersContainer.appendChild(NewLayer);
 
-    // Saving layer information
     Layers.push({
         LayerDiv: NewLayer,
         Element: object,
         NumberLayerText: NumberOfLayer,
         Name: name,
-    })
+    });
 
-   
-    // Adding evenets
     NewLayer.addEventListener("click", function() {
         SelectLayer(object.style.zIndex - 1);
     });
 
-    EnableLayerToBeDragged(object.style.zIndex - 1);
+    EnableLayerToBeDragged(newLayerIndex);
 }
+
 
 
 // Keyboard shortcuts

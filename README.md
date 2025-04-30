@@ -18,6 +18,7 @@ Feautures:
     <li>Zoom in/out</li>
     <li>Moving canvas</li>
     <li>Copy & paste</li>
+    <li>Full screen</li>
     <li>Warning messages when you are editing an image and you tried to either close or refresh the window</li>
 </ul>
 
@@ -90,6 +91,12 @@ When you hold the click on the mouse's wheel button and you move the mouse, you 
 ### Copy & paste
 
 As most of the softwares, I added the possibility of copying `(Control + C)` a selected element and paste it `(Control + V)` to duplicate it.
+
+#
+
+### Full screen
+
+On top of the screen, on the right-hand side, there is a button that once you click on it, the image you are editing will display in full screen. Once you entered in that mode, by pressing on the escape button you can go back to the edit mode again.
 
 #
 
