@@ -97,6 +97,7 @@ As most of the softwares, I added the possibility of copying `(Control + C)` a s
 ### Full screen
 
 On top of the screen, on the right-hand side, there is a button that once you click on it, the image you are editing will display in full screen. Once you entered in that mode, by pressing on the escape button you can go back to the edit mode again.
+However, this is only for the edit mode, what means that if you have not created any project yet, not even the button will show up. 
 
 #
 
