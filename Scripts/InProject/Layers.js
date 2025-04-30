@@ -32,7 +32,9 @@ function UnselectLayer() {
         CurrentToolSelected = null;
     }
 
-    LayerSelected.Element.children[0].remove();
+    if (LayerSelected.Element.children[0] != null) {
+        LayerSelected.Element.children[0].remove();
+    }
 
     LayerSelected.Element.style.border = "0";
     LayerSelected.LayerDiv.style.backgroundColor = "#00000000";
