@@ -26,6 +26,10 @@ function EnableCopyPaste() {
 
         AddLayer(`(Copy) ${copying.Name}`, NewElement);
         SetAsDraggable(NewElement);
+
+        NewElement.addEventListener("click", function() {
+            SelectLayer(NewElement.style.zIndex - 1);
+        })
     })
 
     window.addEventListener("keydown", function(event) {
