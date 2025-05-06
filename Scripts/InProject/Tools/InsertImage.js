@@ -20,7 +20,7 @@ function EnableInsertImage() {
                 image.style.position = "absolute";
                 image.style.backgroundColor = "#00000000";
                 image.style.left = 0;
-                image.style.right = 0;
+                image.style.top = 0;
                 image.style.transform = "translateY(-50%)";
 
                 Canvas.appendChild(image);
