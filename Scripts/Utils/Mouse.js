@@ -1,5 +1,7 @@
 let MousePosition = {x: 0, y: 0};
 
+const CanvasDiv = document.getElementById("canvas");
+
 // Updating mouse's positions
 document.addEventListener('mousemove', function(event) {
     // Having in mind the scroll position 
@@ -19,3 +21,15 @@ document.addEventListener('mousemove', function(event) {
     MousePosition.x = event.pageX;
     MousePosition.y = event.pageY;
 })
+
+
+// Get mouse in canvas
+function GetMousePositionInCanvas() {
+  const scaleX = CanvasRect.width / Canvas.offsetWidth;
+  const scaleY = CanvasRect.height / Canvas.offsetHeight;
+
+  return {
+      x: (MousePosition.x - CanvasRect.left) / scaleX,
+      y: (MousePosition.y - CanvasRect.top) / scaleY
+  };
+}

@@ -7,9 +7,11 @@ function EnableRotationTool() {
 
     // Calculates the angle that is from the center of the object selected to the current mouse position
     function GetCurrentTheta() {
+        const CurrentPosition = GetMousePositionInCanvas();
+
         return Math.atan2(
-            parseInt(LayerSelected.Element.style.top, 0xA) + parseInt(this.window.getComputedStyle(LayerSelected.Element).height, 0xA) * .5 - MousePosition.y,
-            parseInt(LayerSelected.Element.style.left, 0xA) + parseInt(this.window.getComputedStyle(LayerSelected.Element).width, 0xA) * .5 - MousePosition.x,
+            parseInt(LayerSelected.Element.style.top, 0xA) + parseInt(this.window.getComputedStyle(LayerSelected.Element).height, 0xA) * .5 - CurrentPosition.y,
+            parseInt(LayerSelected.Element.style.left, 0xA) + parseInt(this.window.getComputedStyle(LayerSelected.Element).width, 0xA) * .5 - CurrentPosition.x,
         );
     }
 

@@ -1,5 +1,3 @@
-let CanvasRect = document.getElementById("canvas").getBoundingClientRect();
-
 function EnableZoom() {
     const ZoomText = document.getElementById("zoom-text");
     const ZoomInButton = document.getElementById("zoom-in");

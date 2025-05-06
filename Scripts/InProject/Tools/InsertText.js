@@ -33,12 +33,11 @@ function EnableInsertText() {
                 return;
             }
 
-            const MouseX = MousePosition.x - CanvasRect.left;
-            const MouseY = MousePosition.y - CanvasRect.top;
+            const CurrentMousePosition = GetMousePositionInCanvas();
 
             // Checking if the click was on the canvas
-            const IsMouseOverCanvas = MouseX >= 0 && MouseX <= parseInt(Canvas.style.width)
-                                   && MouseY >= 0 && MouseY <= parseInt(Canvas.style.height);
+            const IsMouseOverCanvas = CurrentMousePosition.x >= 0 && CurrentMousePosition.x <= parseInt(Canvas.style.width)
+                                   && CurrentMousePosition.y >= 0 && CurrentMousePosition.y <= parseInt(Canvas.style.height);
 
 
             if (!IsMouseOverCanvas) { return; }
@@ -47,8 +46,8 @@ function EnableInsertText() {
             // Creating a new text
             const NewText = this.document.createElement("span");
             NewText.style.color = Color.value;
-            NewText.style.left = `${MouseX}px`;
-            NewText.style.top = `${MouseY}px`;
+            NewText.style.left = `${CurrentMousePosition.x}px`;
+            NewText.style.top = `${CurrentMousePosition.y}px`;
             NewText.style.fontSize = "2rem";
             NewText.style.fontFamily = "Courier New";
             NewText.style.position = "absolute";
