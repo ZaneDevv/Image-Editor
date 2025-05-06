@@ -2,13 +2,19 @@ let UndoStack = [];
 let RedoStack = [];
 
 function Undo() {
-    console.log("Undo");
-    if (UndoStack.length == 0) { return; }
+    if (UndoStack.length == 0) { return; } // Cannot work without tasks done
+
+    let lastTaskDone = UndoStack.pop();
+    lastTaskDone.Undo();
+    RedoStack.push(lastTaskDone);
 }
 
 function Redo() {
-    console.log("Redo");
-    if (RedoStack.length == 0) { return; }
+    if (RedoStack.length == 0) { return; } // Cannot work without any undo done
+
+    let lastUndoDone = RedoStack.pop();
+    lastUndoDone.Redo();
+    UndoStack.push(lastUndoDone);
 }
 
 function AddTaskDone(task) {
@@ -17,28 +23,25 @@ function AddTaskDone(task) {
 
 function EnableUndoRedo() {
     let isControlPressed = false;
-    let isShiftPressed = false;
 
     window.addEventListener("keyup", function(event) {
         switch(event.key) {
             case "z":
-                if (isControlPressed && isShiftPressed) {
-                    Redo();
-                    break;
-                }
-
                 if (isControlPressed) {
                     Undo();
                 }
 
                 break;
-                
-            case "Control": 
-                isControlPressed = false;
+
+            case "y":
+                if (isControlPressed) {
+                    Redo();
+                }
+
                 break;
 
-            case "Shift":
-                isShiftPressed = false;
+            case "Control": 
+                isControlPressed = false;
                 break;
             
             default: break;
@@ -46,13 +49,8 @@ function EnableUndoRedo() {
     });
 
     window.addEventListener("keydown", function(event) {
-        if (event.key === "Control") {
-            isControlPressed = true;
-            return;
-        }
+        if (event.key != "Control") { return;}
         
-        if (event.key === "Shift") {
-            isShiftPressed = true;
-        }
+        isControlPressed = true;
     });
 }

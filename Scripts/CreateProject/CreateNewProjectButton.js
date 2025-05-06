@@ -16,6 +16,9 @@
 
         if (width == NaN || height == NaN) { return; } // Cannot create a project without size
 
+        if (width <= 0) { width = 100; }
+        if (height <= 0) { height = 100; }
+
         CreateProject(width, height); // Setting up the project
 
         // Closing menu
