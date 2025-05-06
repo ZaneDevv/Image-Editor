@@ -5,7 +5,9 @@ function EnableProjectEditing() {
     EnableZoom();
     EnableMovement();
     EnableCopyPaste();
+    EnableUndoRedo();
     
+
     /* Enable tools */
     EnableInsertText();
     EnableInsertImage();

@@ -8,13 +8,13 @@ function EnableZoom() {
 
     let isShiftPressed = false; {
         document.addEventListener("keydown", function(event) {
-            if (!(event.key == "Shift")) { return; }
+            if (event.key != "Shift") { return; }
             
             isShiftPressed = true;
         });
     
         document.addEventListener("keyup", function(event) {
-            if (!(event.key == "Shift")) { return; }
+            if (event.key != "Shift") { return; }
             
             isShiftPressed = false;
         });
