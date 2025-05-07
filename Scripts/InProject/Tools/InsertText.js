@@ -162,12 +162,12 @@ function EnableInsertText() {
                 let isMouseOnText = false;
                 {
                     const Rect = NewText.getBoundingClientRect();
-                    const Position = GetMousePositionInCanvas(); // Assuming this function gives relative canvas coordinates.
+                    const Position = GetMousePositionInCanvas();
                 
                     let aabbX = Position.x > Rect.left && Position.x < Rect.right;
                     let aabbY = Position.y > Rect.top && Position.y < Rect.bottom;
                 
-                    isMouseOnText = aabbX && aabbY;  // Fixed this line to correctly assign to isMouseOnText
+                    isMouseOnText = aabbX && aabbY;
                 }
                 
                 // Didn't mean to blur it
