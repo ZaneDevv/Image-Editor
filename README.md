@@ -41,6 +41,8 @@ To insert a text you have two options: either you click on the canvas afer press
 Once you have a text on the canvas, you can click twice over it to change its content.
 You can also edit the text (color, size, bold, italic, underline...) when you are in edit mode (writing the text).
 
+
+
 #
 
 ### Images
@@ -55,6 +57,10 @@ On the left-hand side of the screen, you will see a menu with the title "Layers"
 You can select each one and see with a blue border which is the object that this layer belongs to. Also, you can click on the object in the canvas to select it and work with it, being both the object and its layers highlighted.
 By selecting the layer, you can drag by moving the mouse after keep clicking on it for a second and remove it by pressing the delete ket on the keyboard.
 I also added a feature that allows you to move through the layers by using the arrow keys on your keyboard very easily.
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/b35dce05-080e-41c1-8729-fc082d2fcf51" width="70%" />
+</div>
 
 #
 
