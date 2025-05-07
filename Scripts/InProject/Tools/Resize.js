@@ -18,21 +18,21 @@ function EnableScaleTool() {
     TopLeftCornerDrag.style.left = 0;
 
     const BottomLeftCornerDrag = TopLeftCornerDrag.cloneNode(false);
-    BottomLeftCornerDrag.style.bottom = 0;
+    BottomLeftCornerDrag.style.top = "100%";
     BottomLeftCornerDrag.style.left = 0;
 
     const BottomRightCornerDrag = TopLeftCornerDrag.cloneNode(false);
-    BottomRightCornerDrag.style.bottom = 0;
-    BottomRightCornerDrag.style.right = 0;
+    BottomRightCornerDrag.style.top = "100%";
+    BottomRightCornerDrag.style.left = "100%";
 
     const TopRightCornerDrag = TopLeftCornerDrag.cloneNode(false);
     TopRightCornerDrag.style.top = 0;
-    TopRightCornerDrag.style.right = 0;
+    TopRightCornerDrag.style.left = "100%";
 
     TopLeftCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nwse-resize");
     BottomLeftCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nesw-resize");
     BottomRightCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nwse-resize");
-    TopLeftCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nesw-resize");
+    TopRightCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nesw-resize");
 
 
     function ScaleBehaviour() {
@@ -49,23 +49,56 @@ function EnableScaleTool() {
 
         let CornersParent =  LayerSelected.Element.children[0];
         if (CornersParent == null) {
+            const CornersParentParent = document.createElement("div");
+            CornersParentParent.style.position = "absolute";
+            CornersParentParent.style.width = "100%";
+            CornersParentParent.style.height = "100%";
+            CornersParentParent.style.pointerEvents = "none";
+            CornersParentParent.style.zIndex = 9999;
+            CornersParentParent.style.top = 0;
+            CornersParentParent.style.left = 0;
+            CornersParentParent.style.backgroundColor = "#00000000";
+
             CornersParent = document.createElement("div");
             CornersParent.style.position = "relative";
             CornersParent.style.width = "100%";
             CornersParent.style.height = "100%";
             CornersParent.style.pointerEvents = "none";
-            CornersParent.style.zIndex = 9999;
             CornersParent.style.top = 0;
             CornersParent.style.left = 0;
-            CornersParent.style.backgroundColor = "#ff0000";
+            CornersParent.style.backgroundColor = "#00000000";
 
-            LayerSelected.Element.appendChild(CornersParent);
+            CornersParentParent.appendChild(CornersParent);
+            LayerSelected.Element.appendChild(CornersParentParent);
+        }
+        else {
+            CornersParent = CornersParent.children[0];
         }
 
         CornersParent.appendChild(TopLeftCornerDrag);
         CornersParent.appendChild(BottomLeftCornerDrag);
         CornersParent.appendChild(BottomRightCornerDrag);
         CornersParent.appendChild(TopRightCornerDrag);
+
+        // Moving mouse to scale methods
+        function LeftTopCornerMove() {
+            let currentTransform = LayerSelected.Element.style.transform;
+            let scaleMatch = currentTransform.match(/scale\(([^)]+)\)/);
+
+            const StartingMousePosition = GetMousePositionInCanvas();
+
+            if (scaleMatch) {
+                let currentScale = parseFloat(scaleMatch[1]);
+
+                let difference 
+
+                LayerSelected.Element.style.transform = currentTransform.replace(scaleRegex, `scale(${newScale})`);
+            } else {
+                LayerSelected.Element.style.transform += " scale(1)";
+            }
+        }
+
+        TopLeftCornerDrag.addEventListener("mousedown", LeftTopCornerMove);
     }
 
     ScaleButton.addEventListener("click", ScaleBehaviour);

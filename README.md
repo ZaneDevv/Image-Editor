@@ -39,6 +39,7 @@ When you need to create a new project, you have two clar options: either you cre
 
 To insert a text you have two options: either you click on the canvas afer press the T key or go to the left panel, click on the text button (the first one with the double T) and click again on the canvas. In this way, you can write whatever you want.
 Once you have a text on the canvas, you can click twice over it to change its content.
+You can also edit the text (color, size, bold, italic, underline...) when you are in edit mode (writing the text).
 
 #
 

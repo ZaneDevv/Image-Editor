@@ -19,7 +19,7 @@ function EnableCopyPaste() {
         if (copying == null) { return; }
 
 
-        const NewElement = copying.Element.cloneNode(false);
+        const NewElement = copying.Element.cloneNode(true);
         NewElement.style.borderWidth = 0;
         
         Canvas.appendChild(NewElement);
