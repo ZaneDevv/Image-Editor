@@ -7,6 +7,13 @@ function EnableInsertText() {
     const Body = document.getElementsByTagName("body")[0];
 
     const Color = document.getElementById("color");
+    
+    const TextEdtitingMenu  = document.getElementById("text-editing");
+    const BoldButton = document.querySelector("#text-editing > button[bold]");
+    const ItalicButton = document.querySelector("#text-editing > button[italic]");
+    const UnderlineButton = document.querySelector("#text-editing > button[underline]");
+    const ColorInput = document.querySelector("#text-editing > input[type='color']");
+    const SizeInput = document.querySelector("#text-editing > input[type='number']");
 
     let canInsertText = true;
 
@@ -59,10 +66,65 @@ function EnableInsertText() {
 
             AddLayer("New text", NewText);
             SetAsDraggable(NewText);
+
+            // Enable editing text methods
+            function TurnOnBold() {
+                if (NewText.style.fontWeight == "bold") {
+                    NewText.style.fontWeight = "normal";
+
+                    return;
+                }
+
+                NewText.style.fontWeight = "bold";
+            }
+
+            function TurnOnItalic() {
+                if (NewText.style.fontStyle == "italic") {
+                    NewText.style.fontStyle = "normal";
+
+                    return;
+                }
+
+                NewText.style.fontStyle = "italic";
+            }
+
+            function TurnOnUnderline() {
+                if (NewText.style.textDecoration == "underline") {
+                    NewText.style.textDecoration = "none";
+
+                    return;
+                }
+
+                NewText.style.textDecoration = "underline";
+            }
+
+            function ChangeColor() {
+                NewText.style.color = ColorInput.value;
+            }
+
+            function ChangeSize() {
+                NewText.style.fontSize = `${SizeInput.value}px`;
+            }
             
+            function EnableEditing() {
+                const MousePosition = GetMousePositionInCanvas();
+
+                TextEdtitingMenu.style.left = `${MousePosition.x}px`;
+                TextEdtitingMenu.style.top = `${MousePosition.y}px`;
+                TextEdtitingMenu.style.visibility = "visible";
+
+                BoldButton.addEventListener("mouseup", TurnOnBold);
+                ItalicButton.addEventListener("mouseup", TurnOnItalic);
+                UnderlineButton.addEventListener("mouseup", TurnOnUnderline);
+                ColorInput.addEventListener("change", ChangeColor);
+                SizeInput.addEventListener("change", ChangeSize);
+            }
+            EnableEditing();
+
             // Able to select tis layer by clicking on the actual object in the canvas
             // If the user click twice, the layer will be unselected and the user starts editing the text
             let lastTimeClicked = 0;
+
 
             NewText.addEventListener("click", function() {
                 const CurrentTime = (new Date()).getTime();
@@ -74,6 +136,9 @@ function EnableInsertText() {
                         NewText.contentEditable = "true";
                         NewText.focus();
 
+                        // Enable text edition
+                        EnableEditing();
+
                         return;
                     }
                 }
@@ -83,9 +148,48 @@ function EnableInsertText() {
             })
 
             // When the user unfocuses the text, it will no longer editable until you click twice over it
-            NewText.addEventListener("blur", function() {
+            this.window.addEventListener("mouseup", function() {
+                let isMouseOnTextEditing = false; 
+                {
+                    const Rect = TextEdtitingMenu.getBoundingClientRect();
+                
+                    let aabbX = MousePosition.x > Rect.left && MousePosition.x < Rect.right;
+                    let aabbY = MousePosition.y > Rect.top && MousePosition.y < Rect.bottom;
+                
+                    isMouseOnTextEditing = aabbX && aabbY;
+                }
+                
+                let isMouseOnText = false;
+                {
+                    const Rect = NewText.getBoundingClientRect();
+                    const Position = GetMousePositionInCanvas(); // Assuming this function gives relative canvas coordinates.
+                
+                    let aabbX = Position.x > Rect.left && Position.x < Rect.right;
+                    let aabbY = Position.y > Rect.top && Position.y < Rect.bottom;
+                
+                    isMouseOnText = aabbX && aabbY;  // Fixed this line to correctly assign to isMouseOnText
+                }
+                
+                // Didn't mean to blur it
+                if (isMouseOnTextEditing || isMouseOnText) {
+                    NewText.focus();  // Focus if the mouse is not over either element
+                    return;
+                }
+                
+
                 NewText.contentEditable = "false";
                 canInsertText = true;
+
+                // Disable text editing
+                TextEdtitingMenu.style.visibility = "hidden";
+               
+                BoldButton.removeEventListener("mouseup", TurnOnBold);
+                ItalicButton.removeEventListener("mouseup", TurnOnItalic);
+                UnderlineButton.removeEventListener("mouseup", TurnOnUnderline);
+                ColorInput.removeEventListener("change", ChangeColor);
+                SizeInput.removeEventListener("change", ChangeSize);
+
+                ChangeColor();
             });
             
             Body.style.cursor = "default";

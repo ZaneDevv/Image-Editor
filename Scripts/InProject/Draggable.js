@@ -6,6 +6,8 @@ function SetAsDraggable(object) {
 
     let DifferenceX = 0;
     let DifferenceY = 0;
+
+    let isDragging = false;
     
     function Drag() {
         const CurrentMousePosition = GetMousePositionInCanvas();
@@ -16,7 +18,9 @@ function SetAsDraggable(object) {
 
     // Start dragging
     object.addEventListener("mousedown", function(event) {
-        if (!(event.button === 0)) { return; } // Left button
+        if (event.button != 0) { return; } // Left button
+
+        isDragging =  true;
 
         Body.style.cursor = "grab";
 
@@ -32,7 +36,8 @@ function SetAsDraggable(object) {
 
     // Stop dragging
     window.addEventListener("mouseup", function(event) {
-        if (!(event.button === 0)) { return; } // Left button
+        if (event.button != 0 || !isDragging) { return; } // Left button
+        isDragging = false;
 
         window.removeEventListener("mousemove", Drag);
 
