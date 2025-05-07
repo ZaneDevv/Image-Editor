@@ -41,7 +41,9 @@ To insert a text you have two options: either you click on the canvas afer press
 Once you have a text on the canvas, you can click twice over it to change its content.
 You can also edit the text (color, size, bold, italic, underline...) when you are in edit mode (writing the text).
 
-
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/54677549-02d7-40e0-9945-a7037f61d260" width="70%" />
+</div>
 
 #
 
