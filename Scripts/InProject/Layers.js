@@ -2,6 +2,7 @@ let Layers = [];
 let LayerSelected = null;
 let layerSelectedIndex = null;
 
+
 const LayersContainer = document.getElementById("layers-container");
 
 function RemoveLayer(layer) {
