@@ -7,8 +7,6 @@ function Undo() {
     let lastTaskDone = UndoStack.pop();
     lastTaskDone.Undo();
     RedoStack.push(lastTaskDone);
-
-    console.log("Undo: ", UndoStack, "\n Redo: ", RedoStack)
 }
 
 function Redo() {
@@ -17,13 +15,10 @@ function Redo() {
     let lastUndoDone = RedoStack.pop();
     lastUndoDone.Redo();
     UndoStack.push(lastUndoDone);
-
-    console.log("Undo: ", UndoStack, "\n Redo: ", RedoStack)
 }
 
 function AddTaskDone(task) {
     UndoStack.push(task);
-    console.log("Undo: ", UndoStack, "\n Redo: ", RedoStack)
 }
 
 function EnableUndoRedo() {
