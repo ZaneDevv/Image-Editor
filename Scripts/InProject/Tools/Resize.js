@@ -16,6 +16,7 @@ function EnableScaleTool() {
     TopLeftCornerDrag.style.position = "absolute";
     TopLeftCornerDrag.style.top = 0;
     TopLeftCornerDrag.style.left = 0;
+    TopLeftCornerDrag.style.zIndex = 500;
 
     const BottomLeftCornerDrag = TopLeftCornerDrag.cloneNode(false);
     BottomLeftCornerDrag.style.top = "100%";
@@ -80,25 +81,38 @@ function EnableScaleTool() {
         CornersParent.appendChild(BottomRightCornerDrag);
         CornersParent.appendChild(TopRightCornerDrag);
 
-        // Moving mouse to scale methods
-        function LeftTopCornerMove() {
+        const StartingMousePosition = GetMousePositionInCanvas();
+        let clickedOnElement = false;
+
+        LayerSelected.Element.addEventListener("mousedown", () => {
+            clickedOnElement = true;
+        });
+
+        window.addEventListener("mouseup", () => {
+            clickedOnElement = false;
+        });
+
+        window.addEventListener("mousemove", () => {
+            if (!clickedOnElement) { return; }
+
+            const mousePosition = GetMousePositionInCanvas();
+            const deltaX = mousePosition.x - StartingMousePosition.x;
+            const deltaY = mousePosition.y - StartingMousePosition.y;
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
             let currentTransform = LayerSelected.Element.style.transform;
             let scaleMatch = currentTransform.match(/scale\(([^)]+)\)/);
 
-            const StartingMousePosition = GetMousePositionInCanvas();
-
             if (scaleMatch) {
                 let currentScale = parseFloat(scaleMatch[1]);
+                let newScale = currentScale + distance / 500;
+                
 
-                let difference 
-
-                LayerSelected.Element.style.transform = currentTransform.replace(scaleRegex, `scale(${newScale})`);
+                LayerSelected.Element.style.transform = currentTransform.replace(/scale\([^)]+\)/, `scale(${newScale})`);
             } else {
                 LayerSelected.Element.style.transform += " scale(1)";
             }
-        }
-
-        TopLeftCornerDrag.addEventListener("mousedown", LeftTopCornerMove);
+        });
     }
 
     ScaleButton.addEventListener("click", ScaleBehaviour);

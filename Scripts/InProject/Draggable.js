@@ -18,7 +18,7 @@ function SetAsDraggable(object) {
 
     // Start dragging
     object.addEventListener("mousedown", function(event) {
-        if (event.button != 0) { return; } // Left button
+        if (event.button != 0 || CurrentToolSelected == "Scale") { return; } // Left button and not scaling
 
         isDragging =  true;
 
