@@ -1,3 +1,7 @@
+// CONSTANTS
+
+const SQRT_2 = Math.sqrt(2);
+
 
 // INTERPOLATION
 function Lerp(a, b, t) {
@@ -24,4 +28,12 @@ function Clamp(x, min, max) {
 
 function Abs(x) {
     return x < 0 ? -x : x;
+}
+
+function Min(x, min) {
+    return x < min ? min : x;
+}
+
+function Max(x, max) {
+    return x > max ? max : x;
 }
