@@ -46,6 +46,10 @@ function EnableScaleTool() {
         if (LayerSelected == null) { return; }
         CurrentToolSelected = ScaleToolName;
 
+        const rect = LayerSelected.Element.getBoundingClientRect();
+        const elementWidth = rect.width;
+        const elementHeight = rect.height;
+
         LayerSelected.Element.style.borderStyle = "dashed";
 
         let CornersParent =  LayerSelected.Element.children[0];
@@ -82,6 +86,9 @@ function EnableScaleTool() {
         CornersParent.appendChild(TopRightCornerDrag);
 
         const StartingMousePosition = GetMousePositionInCanvas();
+
+        let previousMousePosition = StartingMousePosition;
+
         let clickedOnElement = false;
 
         LayerSelected.Element.addEventListener("mousedown", () => {
@@ -99,19 +106,29 @@ function EnableScaleTool() {
             const deltaX = mousePosition.x - StartingMousePosition.x;
             const deltaY = mousePosition.y - StartingMousePosition.y;
             const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            
+            const elementPositionCenterX = parseFloat(LayerSelected.Element.style.left) + elementWidth * 0.5;
+            const elementPositionCenterY = parseFloat(LayerSelected.Element.style.top) + elementHeight * 0.5;
+
+            const vectorX = mousePosition.x - elementPositionCenterX;
+            const vectorY = mousePosition.y - elementPositionCenterY;
+            const magnitude = Math.sqrt(vectorX * vectorX + vectorY * vectorY);
+
+            const dotProduct = deltaX / distance * vectorX / magnitude + deltaY / distance * vectorY / magnitude;
 
             let currentTransform = LayerSelected.Element.style.transform;
             let scaleMatch = currentTransform.match(/scale\(([^)]+)\)/);
 
             if (scaleMatch) {
                 let currentScale = parseFloat(scaleMatch[1]);
-                let newScale = currentScale + distance / 500;
-                
+                let newScale = currentScale + distance / 500 * dotProduct;
 
                 LayerSelected.Element.style.transform = currentTransform.replace(/scale\([^)]+\)/, `scale(${newScale})`);
             } else {
                 LayerSelected.Element.style.transform += " scale(1)";
             }
+
+            previousMousePosition = mousePosition;
         });
     }
 
