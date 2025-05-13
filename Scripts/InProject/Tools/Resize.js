@@ -46,10 +46,6 @@ function EnableScaleTool() {
         if (LayerSelected == null) { return; }
         CurrentToolSelected = ScaleToolName;
 
-        const rect = LayerSelected.Element.getBoundingClientRect();
-        const elementWidth = rect.width;
-        const elementHeight = rect.height;
-
         LayerSelected.Element.style.borderStyle = "dashed";
 
         let CornersParent =  LayerSelected.Element.children[0];
@@ -114,14 +110,25 @@ function EnableScaleTool() {
             previousMousePosition = mousePosition;
         }
 
-        LayerSelected.Element.addEventListener("mousedown", () => {
+        function OnMouseDown() {
             clickedOnElement = true;
+
+            if (LayerSelected == null) { return; }
+            if (LayerSelected.Element.contentEditable == "true") { return; }
+
             window.addEventListener("mousemove", OnMouseMove);
-        });
+        }
+
+        LayerSelected.Element.addEventListener("mousedown", OnMouseDown);
 
         window.addEventListener("mouseup", () => {
             clickedOnElement = false;
+            
+            ScaleBehaviour();
+
+            LayerSelected.Element.removeEventListener("mousedown", OnMouseDown);
             window.removeEventListener("mousemove", OnMouseMove);
+            window.removeEventListener("mouseup", arguments.callee);
         });
 
     }
