@@ -91,7 +91,7 @@ function EnableScaleTool() {
         let clickedOnElement = false;
 
         function OnMouseMove() {
-            if (!clickedOnElement) { return; }
+            if (!clickedOnElement || LayerSelected == null) { return; }
 
             const mousePosition = GetMousePositionInCanvas();
             const deltaX = mousePosition.x - StartingMousePosition.x;
