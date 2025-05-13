@@ -86,20 +86,11 @@ function EnableScaleTool() {
         CornersParent.appendChild(TopRightCornerDrag);
 
         const StartingMousePosition = GetMousePositionInCanvas();
-
         let previousMousePosition = StartingMousePosition;
 
         let clickedOnElement = false;
 
-        LayerSelected.Element.addEventListener("mousedown", () => {
-            clickedOnElement = true;
-        });
-
-        window.addEventListener("mouseup", () => {
-            clickedOnElement = false;
-        });
-
-        window.addEventListener("mousemove", () => {
+        function OnMouseMove() {
             if (!clickedOnElement) { return; }
 
             const mousePosition = GetMousePositionInCanvas();
@@ -121,7 +112,18 @@ function EnableScaleTool() {
             }
 
             previousMousePosition = mousePosition;
+        }
+
+        LayerSelected.Element.addEventListener("mousedown", () => {
+            clickedOnElement = true;
+            window.addEventListener("mousemove", OnMouseMove);
         });
+
+        window.addEventListener("mouseup", () => {
+            clickedOnElement = false;
+            window.removeEventListener("mousemove", OnMouseMove);
+        });
+
     }
 
     ScaleButton.addEventListener("click", ScaleBehaviour);
