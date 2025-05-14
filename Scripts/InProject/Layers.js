@@ -27,10 +27,25 @@ function RemoveLayer(layer) {
 }
 
 function UnselectLayer() {
-    if (LayerSelected === null) { return; } // Checking if there is a layer selected
+    if (LayerSelected === null) { // Checking if there is a layer selected
+
+        if (DEBUGGING_MODE) {
+            ErrorPrint("Cannot unselect something that has not being selected yet.");
+        }
+
+        return;
+    }
 
     if (CurrentToolSelected == "Rotate" || CurrentToolSelected == "Scale") {
         CurrentToolSelected = null;
+
+        if (DEBUGGING_MODE) {
+            ErrorPrint("Cannot unselect a layer that is being either rotated or scaled.");
+        }
+    }
+
+    if (DEBUGGING_MODE) {
+        DebugPrint(`Unselecting layer ${LayerSelected}`);
     }
 
     if (LayerSelected.Element.children[0] != null) {
@@ -51,7 +66,14 @@ function SelectLayer(layerIndex) {
         return;
     }
     
-    if (layerIndex < 0 || layerIndex >= Layers.length) { return; } // Checking if the index exists
+    if (layerIndex < 0 || layerIndex >= Layers.length) { // Checking if the index exists
+
+        if (DEBUGGING_MODE) {
+            ErrorPrint("This layer does not exist.");
+        }
+
+        return;
+    }
     
     
     layerSelectedIndex = layerIndex;
@@ -61,6 +83,10 @@ function SelectLayer(layerIndex) {
 
     if (LayerSelected === layer) { return; } // Checking if the selected layer is the one the user wants to select
 
+    if (DEBUGGING_MODE) {
+        DebugPrint(`Selecting layer ${layer}`);
+    }
+
     layer.LayerDiv.style.backgroundColor = "#ffffff10";
     layer.Element.style.border = "3px solid #5555ff";
 
@@ -69,7 +95,18 @@ function SelectLayer(layerIndex) {
 
 function EnableLayerToBeDragged(layerIndex) {
     // Neither non-existent layers nor background layer are allowed to be dragged
-    if (Layers[layerIndex] == null || layerIndex == 0) { return; }
+    if (Layers[layerIndex] == null || layerIndex == 0) {
+
+        if (DEBUGGING_MODE) {
+            ErrorPrint(`Cannot set either the background or non-existent layer as draggable ${layer}`);
+        }
+
+        return;
+    }
+
+    if (DEBUGGING_MODE) {
+        DebugPrint(`Layer selected to be draggable: ${layer}`);
+    }
     
     let stopClick = false;
 
@@ -159,6 +196,10 @@ function EnableLayerToBeDragged(layerIndex) {
 
 
 function AddLayer(name, object) {
+    if (DEBUGGING_MODE) {
+        DebugPrint(`New layer added: ${name}`);
+    }
+
     const newLayerIndex = Layers.length;
 
     object.style.zIndex = newLayerIndex + 1; 
