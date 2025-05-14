@@ -105,7 +105,7 @@ function EnableLayerToBeDragged(layerIndex) {
     }
 
     if (DEBUGGING_MODE) {
-        DebugPrint(`Layer selected to be draggable: ${layer}`);
+        DebugPrint(`Layer selected to be draggable: ${layerIndex}`);
     }
     
     let stopClick = false;
