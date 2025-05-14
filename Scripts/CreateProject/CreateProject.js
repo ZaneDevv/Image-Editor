@@ -5,6 +5,10 @@ const Canvas = document.getElementById("canvas");
 const ButtonSeeImage = document.querySelector("header > button");
 
 function CreateProject(width, height, image) {
+    if (DEBUGGING_MODE) {
+        DebugPrint("Creating a new project.");
+    }
+
     IsInProject = true;
 
     CreateProjectMenu.style.visibility = "hidden";
@@ -18,9 +22,17 @@ function CreateProject(width, height, image) {
     if (image != null) { // Checking if the user has a background image
         Canvas.appendChild(image);
         Canvas.style.boxShadow = '0px 0px 1px 0px white';
+
+        if (DEBUGGING_MODE) {
+            DebugPrint("Project with background image.");
+        }
     }
     else {
         Canvas.style.backgroundColor = 'white';
+
+        if (DEBUGGING_MODE) {
+            DebugPrint("Empty background canvas.");
+        }
     }
 
     EnableProjectEditing();

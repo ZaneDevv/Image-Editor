@@ -7,6 +7,11 @@ function EnableFullScreenButton() {
     const Canvas = document.getElementById("canvas");
 
     ButtonSeeImage.addEventListener("click", function() {
+
+        if (DEBUGGING_MODE) {
+            DebugPrint("Opeing full screen div.");
+        }
+
         FullScreenDiv.style.visibility = "visible";
 
         Body.style.cursor = "none";
@@ -32,5 +37,9 @@ function EnableFullScreenButton() {
 
         FullScreenDiv.style.visibility = "hidden";
         FullScreenDiv.children[0].remove();
+
+        if (DEBUGGING_MODE) {
+            DebugPrint("Exited from full screen mode.");
+        }
     })
 }

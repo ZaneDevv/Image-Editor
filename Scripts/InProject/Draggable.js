@@ -1,4 +1,8 @@
 function SetAsDraggable(object) {
+    if (DEBUGGING_MODE) {
+        DebugPrint(`${object} was set as draggable.`);
+    }
+
     const Body = document.getElementsByTagName("body")[0];
 
     let startingPositionX = 0;
@@ -32,6 +36,10 @@ function SetAsDraggable(object) {
         DifferenceY = parseInt(object.style.top) - StartingMousePosition.y;
 
         window.addEventListener("mousemove", Drag); // Initializating behaviour
+
+        if (DEBUGGING_MODE) {
+            DebugPrint(`${object} is being dragged.`);
+        }
     })
 
     // Stop dragging
@@ -53,7 +61,11 @@ function SetAsDraggable(object) {
                 object.style.left = finalPositionX;
                 object.style.top = finalPositionY;
             }
-        })
+        });
+
+        if (DEBUGGING_MODE) {
+            DebugPrint(`${object} is no longer being dragged.`);
+        }
 
         Body.style.cursor = "default";
     })

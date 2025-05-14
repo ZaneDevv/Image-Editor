@@ -30,6 +30,10 @@ function EnableMovement() {
     document.addEventListener("mousedown", function(event) {
         if (!(event.button === 1)) { return; } // Wheel button
                 
+        if (DEBUGGING_MODE) {
+            DebugPrint("Starting moving.");
+        }
+
         FixedMouseX = MousePosition.x;
         FixedMouseY = MousePosition.y;
 
@@ -38,6 +42,10 @@ function EnableMovement() {
 
     document.addEventListener("mouseup", function(event) {
         if (!(event.button === 1)) { return; } // Wheel button
+
+        if (DEBUGGING_MODE) {
+            DebugPrint("Stop moving.");
+        }
 
         document.removeEventListener("mousemove", Move);
     })

@@ -8,6 +8,10 @@ const ColorInput = document.querySelector("#text-editing > input[type='color']")
 const SizeInput = document.querySelector("#text-editing > input[type='number']");
 
 function SetTextAsEditable(Text) {
+    if (DEBUGGING_MODE) {
+        DebugPrint(`${Text} was set as editable.`);
+    }
+
     function TurnOnBold() {
         if (Text.style.fontWeight == "bold") {
             Text.style.fontWeight = "normal";
@@ -129,6 +133,10 @@ function SetTextAsEditable(Text) {
         ColorInput.removeEventListener("change", ChangeColor);
         SizeInput.removeEventListener("change", ChangeSize);
 
+        if (DEBUGGING_MODE) {
+            DebugPrint(`The content of the text was changed by: ${TextEdtitingMenu.innerHTML}`);
+        }
+
         ChangeColor();
     });
 }
@@ -186,6 +194,10 @@ function EnableInsertText() {
             NewText.style.position = "absolute";
             NewText.style.transform = "translateY(-50%)";
             NewText.contentEditable = "true";
+
+            if (DEBUGGING_MODE) {
+                DebugPrint("New text was created.");
+            }
 
             Canvas.appendChild(NewText);
             NewText.focus();

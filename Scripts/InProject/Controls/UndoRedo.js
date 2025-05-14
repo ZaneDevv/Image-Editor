@@ -2,7 +2,18 @@ let UndoStack = [];
 let RedoStack = [];
 
 function Undo() {
-    if (UndoStack.length == 0) { return; } // Cannot work without tasks done
+    if (UndoStack.length == 0) { // Cannot work without tasks done
+
+        if (DEBUGGING_MODE) {
+            ErrorPrint("There's no tasks in the undo stack.");
+        }
+
+        return;
+    }
+
+    if (DEBUGGING_MODE) {
+        DebugPrint("Undo");
+    }
 
     let lastTaskDone = UndoStack.pop();
     lastTaskDone.Undo();
@@ -10,7 +21,18 @@ function Undo() {
 }
 
 function Redo() {
-    if (RedoStack.length == 0) { return; } // Cannot work without any undo done
+    if (RedoStack.length == 0) { // Cannot work without any undo done
+
+        if (DEBUGGING_MODE) {
+            ErrorPrint("There's no tasks in the redo stack.");
+        }
+
+        return;
+    } 
+
+    if (DEBUGGING_MODE) {
+        DebugPrint("Redo");
+    }
 
     let lastUndoDone = RedoStack.pop();
     lastUndoDone.Redo();
@@ -19,6 +41,10 @@ function Redo() {
 
 function AddTaskDone(task) {
     UndoStack.push(task);
+
+    if (DEBUGGING_MODE) {
+        DebugPrint("Task added to the undo stack.");
+    }
 }
 
 function EnableUndoRedo() {

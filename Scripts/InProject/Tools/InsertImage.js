@@ -23,6 +23,10 @@ function EnableInsertImage() {
                 image.style.top = 0;
                 image.style.transform = "translateY(-50%)";
 
+                if (DEBUGGING_MODE) {
+                    DebugPrint("New image has been created");
+                }
+
                 Canvas.appendChild(image);
 
                 AddLayer("New image", image);

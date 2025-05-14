@@ -16,6 +16,10 @@
 
         reader.onload = function(e) {
             image.onload = function() {
+                if (DEBUGGING_MODE) {
+                    DebugPrint("Image uploaded correctly.");
+                }
+
                 const width = image.width;
                 const height = image.height;
 

@@ -1,4 +1,8 @@
 function EnableProjectEditing() {
+    if (DEBUGGING_MODE) {
+        DebugPrint("Enabling project tools.");
+    }
+
     EnableFullScreenButton();
 
     /* Enable controls */

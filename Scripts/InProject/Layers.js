@@ -44,6 +44,7 @@ function UnselectLayer() {
 }
 
 function SelectLayer(layerIndex) {
+    
     // In case we are trying to select the layer that is already selected, unselect it instead of select it again
     if (LayerSelected != null && layerIndex == layerSelectedIndex) {
         UnselectLayer();
@@ -51,8 +52,8 @@ function SelectLayer(layerIndex) {
     }
     
     if (layerIndex < 0 || layerIndex >= Layers.length) { return; } // Checking if the index exists
-
-
+    
+    
     layerSelectedIndex = layerIndex;
     let layer = Layers[layerIndex];
 
@@ -187,7 +188,7 @@ function AddLayer(name, object) {
         Name: name,
     });
 
-    NewLayer.addEventListener("click", function() {
+    NewLayer.addEventListener("mouseup", function() {
         SelectLayer(object.style.zIndex - 1);
     });
 

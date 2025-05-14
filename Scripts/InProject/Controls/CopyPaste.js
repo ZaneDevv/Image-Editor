@@ -10,13 +10,28 @@ function EnableCopyPaste() {
         // Copy
         if (LayerSelected == null) { return; }
         copying = LayerSelected;
+
+        if (DEBUGGING_MODE) {
+            DebugPrint("Element has been copied.");
+        }
     })
 
     window.addEventListener("keydown", function(event) {
         if (event.key != "v" || !isPressingControl) { return; }
         
         // Paste if the user has copied something
-        if (copying == null) { return; }
+        if (copying == null) {
+
+            if (DEBUGGING_MODE) {
+                ErrorPrint("Cannot paste an empty space.");
+            }
+
+            return;
+        }
+
+        if (DEBUGGING_MODE) {
+            DebugPrint("Copied element pasted.");
+        }
 
         const NewElement = copying.Element.cloneNode(true);
         NewElement.style.borderWidth = 0;

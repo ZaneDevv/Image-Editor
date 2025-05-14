@@ -40,6 +40,10 @@ function EnableZoom() {
         Zoom(-Sign(event.deltaY) * ZOOM_ADD_AMOUNT);
         
         event.preventDefault();
+
+         if (DEBUGGING_MODE) {
+            DebugPrint("Zoom");
+        }
     }, { passive: false });
 
     ZoomInButton.addEventListener("click", function() {
