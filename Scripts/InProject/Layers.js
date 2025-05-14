@@ -98,7 +98,7 @@ function EnableLayerToBeDragged(layerIndex) {
     if (Layers[layerIndex] == null || layerIndex == 0) {
 
         if (DEBUGGING_MODE) {
-            ErrorPrint(`Cannot set either the background or non-existent layer as draggable ${layer}`);
+            ErrorPrint(`Cannot set either the background or non-existent layer as draggable. Index: ${layerIndex}`);
         }
 
         return;
