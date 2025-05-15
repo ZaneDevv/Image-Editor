@@ -24,9 +24,13 @@ function RemoveLayer(layer) {
         Layers[i] = Layers[i + 1];
     }
     Layers.pop();
+
+    UnselectLayer();
 }
 
 function UnselectLayer() {
+    layerSelectedIndex = null;
+
     if (LayerSelected === null) { // Checking if there is a layer selected
 
         if (DEBUGGING_MODE) {
@@ -42,6 +46,8 @@ function UnselectLayer() {
         if (DEBUGGING_MODE) {
             ErrorPrint("Cannot unselect a layer that is being either rotated or scaled.");
         }
+
+        return;
     }
 
     if (DEBUGGING_MODE) {
@@ -60,12 +66,6 @@ function UnselectLayer() {
 
 function SelectLayer(layerIndex) {
     
-    // In case we are trying to select the layer that is already selected, unselect it instead of select it again
-    if (LayerSelected != null && layerIndex == layerSelectedIndex) {
-        UnselectLayer();
-        return;
-    }
-    
     if (layerIndex < 0 || layerIndex >= Layers.length) { // Checking if the index exists
 
         if (DEBUGGING_MODE) {
@@ -74,17 +74,29 @@ function SelectLayer(layerIndex) {
 
         return;
     }
-    
-    
+
+    // In case we are trying to select the layer that is already selected, unselect it instead of select it again
+    if (layerIndex === layerSelectedIndex) {
+        
+        if (DEBUGGING_MODE) {
+            DebugPrint(`Selecting layer task aborted: selecting the layer that is already selected. \n- Index selected: ${layerSelectedIndex} \n- Layer to select: ${layerIndex}`);
+        }
+        
+        UnselectLayer();  
+
+        return;
+    }
+
+    if (LayerSelected != null) {
+        UnselectLayer();
+    }
+
+
     layerSelectedIndex = layerIndex;
     let layer = Layers[layerIndex];
 
-    UnselectLayer();
-
-    if (LayerSelected === layer) { return; } // Checking if the selected layer is the one the user wants to select
-
     if (DEBUGGING_MODE) {
-        DebugPrint(`Selecting layer ${layer}`);
+        DebugPrint(`Selecting layer ${layer}. \n- Index: ${layerIndex}`);
     }
 
     layer.LayerDiv.style.backgroundColor = "#ffffff10";
