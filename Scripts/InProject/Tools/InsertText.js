@@ -156,8 +156,16 @@ function EnableInsertText() {
         if (CurrentToolSelected == InserTextToolName) {
             CurrentToolSelected = null;
             Body.style.cursor = "default";
+
+            if (DEBUGGING_MODE) {
+                DebugPrint("Unselecting insert text tool.");
+            }
             
             return;
+        }
+
+        if (DEBUGGING_MODE) {
+            DebugPrint("Selecting insert text tool.");
         }
 
         if (!canInsertText) { return; }
@@ -209,6 +217,8 @@ function EnableInsertText() {
             
             Body.style.cursor = "default";
             CurrentToolSelected = null;
+
+            canInsertText = true;
         })
     }
 
