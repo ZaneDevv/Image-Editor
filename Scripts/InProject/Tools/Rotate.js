@@ -23,28 +23,41 @@ function EnableRotationTool() {
 
         // Once the cursor moves, updates the rotation
         function OnMouseMove() {
-
             let newAngle = GetCurrentTheta();
             let theta = newAngle - lastAngle;
 
             lastAngle = newAngle;
 
             let currentTransform = LayerSelected.Element.style.transform;
-            let currentRotation = currentTransform.split("rotate(")[1];
-            if (currentRotation == null) {
-                LayerSelected.Element.style.transform = `rotate(${theta}rad) ${currentTransform}`;
+            
+            let transforms = currentTransform.split(' ');
 
-                return;
+            let rotationFound = false;
+            for (let i = 0; i < transforms.length; i++) {
+                if (transforms[i].startsWith("rotate(")) {
+                    let currentRotation = transforms[i].split("(")[1].split(")")[0]; 
+                    let currentTheta = parseFloat(currentRotation);
+
+                    // If the rotation value is negative, adjust it
+                    if (currentTheta < 0) {
+                        currentTheta = 2 * Math.PI - currentTheta;
+                    }
+
+                    // Update the rotation with the new angle
+                    transforms[i] = `rotate(${currentTheta + theta}rad)`;
+                    rotationFound = true;
+                    
+                    break;
+                }
             }
 
-            let transformAfterRotation = currentRotation.split(")"); 
-            let currentTheta = parseFloat(transformAfterRotation[0], 0xA);
-
-            if (currentTheta < 0) {
-                currentTheta = 2 * Math.PI - currentTheta;
+            // If there's no existing rotation, add the new rotation
+            if (!rotationFound) {
+                transforms.push(`rotate(${theta}rad)`);
             }
 
-            LayerSelected.Element.style.transform = `rotate(${currentTheta + theta}rad) translateY(-50%)`;
+            // Set the transform with the updated rotation and other transforms intact
+            LayerSelected.Element.style.transform = transforms.join(' ');
         }
         this.window.addEventListener("mousemove", OnMouseMove);
 
