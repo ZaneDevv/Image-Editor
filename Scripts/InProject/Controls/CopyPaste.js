@@ -41,14 +41,9 @@ function EnableCopyPaste() {
         AddLayer(`(Copy) ${copying.Name}`, NewElement);
         SetAsDraggable(NewElement);
         
-        if (NewElement.nodeName == "SPAN") {
-            // It is a text, should be editable
+        if (NewElement.nodeName == "SPAN") { // It is a text, should be editable
             SetTextAsEditable(NewElement);
         }
-
-        NewElement.addEventListener("click", function() {
-            SelectLayer(NewElement.style.zIndex - 1);
-        })
     })
 
     window.addEventListener("keydown", function(event) {
