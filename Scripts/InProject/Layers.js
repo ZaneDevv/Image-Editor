@@ -29,12 +29,10 @@ function RemoveLayer(layer) {
 }
 
 function UnselectLayer() {
-    layerSelectedIndex = null;
-
-    if (LayerSelected === null) { // Checking if there is a layer selected
+    if (LayerSelected === null) {
 
         if (DEBUGGING_MODE) {
-            ErrorPrint("Cannot unselect something that has not being selected yet.");
+            ErrorPrint("Cannot unselect something that has not been selected yet.");
         }
 
         return;
@@ -62,12 +60,13 @@ function UnselectLayer() {
     LayerSelected.LayerDiv.style.backgroundColor = "#00000000";
 
     LayerSelected = null;
+    layerSelectedIndex = null;
 }
 
-function SelectLayer(layerIndex) {
-    
-    if (layerIndex < 0 || layerIndex >= Layers.length) { // Checking if the index exists
 
+function SelectLayer(layerIndex) {
+    if (layerIndex < 0 || layerIndex >= Layers.length) {
+        
         if (DEBUGGING_MODE) {
             ErrorPrint("This layer does not exist.");
         }
@@ -75,15 +74,14 @@ function SelectLayer(layerIndex) {
         return;
     }
 
-    // In case we are trying to select the layer that is already selected, unselect it instead of select it again
+    // Prevent selecting the same layer again
     if (layerIndex === layerSelectedIndex) {
         
         if (DEBUGGING_MODE) {
             DebugPrint(`Selecting layer task aborted: selecting the layer that is already selected. \n- Index selected: ${layerSelectedIndex} \n- Layer to select: ${layerIndex}`);
         }
-        
-        UnselectLayer();  
 
+        UnselectLayer();
         return;
     }
 
@@ -91,12 +89,11 @@ function SelectLayer(layerIndex) {
         UnselectLayer();
     }
 
-
     layerSelectedIndex = layerIndex;
     let layer = Layers[layerIndex];
 
     if (DEBUGGING_MODE) {
-        DebugPrint(`Selecting layer ${layer}. \n- Index: ${layerIndex}`);
+        DebugPrint(`Selecting layer ${layer}. \n- Index: ${layerIndex} \n- Index set to ${layerSelectedIndex}`);
     }
 
     layer.LayerDiv.style.backgroundColor = "#ffffff10";
@@ -104,6 +101,7 @@ function SelectLayer(layerIndex) {
 
     LayerSelected = layer;
 }
+
 
 function EnableLayerToBeDragged(layerIndex) {
     // Neither non-existent layers nor background layer are allowed to be dragged
@@ -253,7 +251,7 @@ function AddLayer(name, object) {
 // Keyboard shortcuts
 
 document.addEventListener("keyup", function(event) {
-    if (LayerSelected === null) { return; } // Cannot work without a selected layer
+    if (layerSelectedIndex === null) { return; } // Cannot work without a selected layer
 
     switch (event.key) {
         case "Backspace": // Remove layer
@@ -262,33 +260,22 @@ document.addEventListener("keyup", function(event) {
 
             break;
 
-        case "ArrowUp": // Go next layer 
-            UnselectLayer();
-            SelectLayer(layerSelectedIndex + 1);
+        case "ArrowUp": // Go next layer
+            if (layerSelectedIndex + 1 < Layers.length) {
+                UnselectLayer();
+                SelectLayer(layerSelectedIndex + 1);
+            }
 
             break;
 
         case "ArrowDown": // Go previous layer
-            UnselectLayer();
-            SelectLayer(layerSelectedIndex - 1);
+            if (layerSelectedIndex - 1 >= 0) {
+                UnselectLayer();
+                SelectLayer(layerSelectedIndex - 1);
+            }
 
             break;
 
         default: break;
     }
 });
-
-
-// If mouses's click on anywhere that is neither an object nor a layer, the current selected layer must be unselected 
-document.addEventListener("click", function() {
-
-    // Don't unselect the layer if user's clicked on the canvas
-    if (MousePosition.x > CanvasRect.left && MousePosition.x < CanvasRect.right && MousePosition.y > CanvasRect.top && MousePosition.x < CanvasRect.bottom) {
-        return;
-    }
-
-
-    // Don't unselect the layer if user's clicked on a layer
-
-    UnselectLayer();
-})
