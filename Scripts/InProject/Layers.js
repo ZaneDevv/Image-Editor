@@ -29,6 +29,8 @@ function RemoveLayer(layer) {
 }
 
 function UnselectLayer() {
+    CurrentToolSelected = null;
+    
     if (LayerSelected === null) {
 
         if (DEBUGGING_MODE) {

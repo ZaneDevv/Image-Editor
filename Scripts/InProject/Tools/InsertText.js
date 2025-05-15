@@ -51,10 +51,10 @@ function SetTextAsEditable(Text) {
     }
 
     function EnableEditing() {
-        const MousePosition = GetMousePositionInCanvas();
+        const TextRect = Text.getBoundingClientRect();
 
-        TextEdtitingMenu.style.left = `${MousePosition.x}px`;
-        TextEdtitingMenu.style.top = `${MousePosition.y}px`;
+        TextEdtitingMenu.style.left = TextRect.left;
+        TextEdtitingMenu.style.bottom = TextRect.top;
         TextEdtitingMenu.style.visibility = "visible";
 
         BoldButton.addEventListener("mouseup", TurnOnBold);

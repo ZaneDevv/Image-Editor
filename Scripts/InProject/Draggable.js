@@ -14,6 +14,8 @@ function SetAsDraggable(object) {
     let isDragging = false;
     
     function Drag() {
+        if (CurrentToolSelected == "Scale" || CurrentToolSelected == "Rotate") { return; }
+
         const CurrentMousePosition = GetMousePositionInCanvas();
 
         object.style.left = `${CurrentMousePosition.x + DifferenceX}px`;
@@ -25,6 +27,7 @@ function SetAsDraggable(object) {
         if (event.button != 0 || CurrentToolSelected == "Scale") { return; } // Left button and not scaling
 
         isDragging =  true;
+        CurrentToolSelected = "Drag";
 
         Body.style.cursor = "grab";
 
@@ -68,5 +71,6 @@ function SetAsDraggable(object) {
         }
 
         Body.style.cursor = "default";
+        CurrentToolSelected = null;
     })
 }

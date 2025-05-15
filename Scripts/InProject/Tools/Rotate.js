@@ -17,6 +17,7 @@ function EnableRotationTool() {
 
     function OnMouseIsDown(){
         if (LayerSelected == null) { return; }
+        if (CurrentToolSelected == "Drag" || CurrentToolSelected == "Scale") { return; }
 
         let lastAngle = GetCurrentTheta();
 

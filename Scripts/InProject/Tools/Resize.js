@@ -115,6 +115,7 @@ function EnableScaleTool() {
 
             if (LayerSelected == null) { return; }
             if (LayerSelected.Element.contentEditable == "true") { return; }
+            if (CurrentToolSelected == "Drag" || CurrentToolSelected == "Rotate") { return; }
 
             window.addEventListener("mousemove", OnMouseMove);
         }
