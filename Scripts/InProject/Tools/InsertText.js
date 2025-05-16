@@ -137,7 +137,7 @@ function SetTextAsEditable(Text) {
             DebugPrint(`The content of the text was changed by: ${TextEdtitingMenu.innerHTML}`);
         }
 
-        ChangeColor();
+        //ChangeColor();
     });
 }
 
