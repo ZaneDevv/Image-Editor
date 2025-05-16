@@ -44,6 +44,11 @@ function EnableCopyPaste() {
         if (NewElement.nodeName == "SPAN") { // It is a text, should be editable
             SetTextAsEditable(NewElement);
         }
+        else { // It is an image, should be able to be selected by clicking on it
+            NewElement.addEventListener("mouseup", function() {
+                SelectLayer(NewElement.style.zIndex - 1);
+            });
+        }
     })
 
     window.addEventListener("keydown", function(event) {
