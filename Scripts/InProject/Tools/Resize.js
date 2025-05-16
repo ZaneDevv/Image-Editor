@@ -48,6 +48,8 @@ function EnableScaleTool() {
 
         LayerSelected.Element.style.borderStyle = "dashed";
 
+        let startingTransform = "";
+
         let CornersParent =  LayerSelected.Element.children[0];
         if (CornersParent == null) {
             const CornersParentParent = document.createElement("div");
@@ -117,6 +119,8 @@ function EnableScaleTool() {
             if (LayerSelected.Element.contentEditable == "true") { return; }
             if (CurrentToolSelected == "Drag" || CurrentToolSelected == "Rotate") { return; }
 
+            startingTransform = LayerSelected.Element.style.transform;
+
             window.addEventListener("mousemove", OnMouseMove);
         }
 
@@ -124,10 +128,25 @@ function EnableScaleTool() {
 
         window.addEventListener("mouseup", () => {
             clickedOnElement = false;
+
+            const CurrentLayer = LayerSelected.Element;
+            const CurrentTransform = CurrentLayer.style.transform;
+            const PreviousTransform = startingTransform;
             
             ScaleBehaviour();
 
-            LayerSelected.Element.removeEventListener("mousedown", OnMouseDown);
+            AddTaskDone({
+                Undo: () => {
+                    let transform = PreviousTransform;
+                    CurrentLayer.style.transform = transform;
+                },
+                Redo: () => {
+                    let transform = CurrentTransform;
+                    CurrentLayer.style.transform = transform;
+                }
+            });
+
+            CurrentLayer.removeEventListener("mousedown", OnMouseDown);
             window.removeEventListener("mousemove", OnMouseMove);
             window.removeEventListener("mouseup", arguments.callee);
         });

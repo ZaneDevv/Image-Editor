@@ -12,22 +12,64 @@ function SetTextAsEditable(Text) {
         DebugPrint(`${Text} was set as editable.`);
     }
 
+    let currentColor = "#000";
+    let currentSize = "16px";
+
     function TurnOnBold() {
         if (Text.style.fontWeight == "bold") {
             Text.style.fontWeight = "normal";
+
+            AddTaskDone({
+                Undo: () => {
+                    Text.style.fontWeight = "bold";
+                },
+                Redo: () => {
+                    Text.style.fontWeight = "normal";
+
+                }
+            });
 
             return;
         }
 
         Text.style.fontWeight = "bold";
+
+        AddTaskDone({
+            Undo: () => {
+                Text.style.fontWeight = "normal";
+            },
+            Redo: () => {
+                Text.style.fontWeight = "bold";
+            }
+        });
     }
 
     function TurnOnItalic() {
         if (Text.style.fontStyle == "italic") {
             Text.style.fontStyle = "normal";
 
+            AddTaskDone({
+                Undo: () => {
+                    Text.style.fontStyle = "italic";
+                },
+                Redo: () => {
+                    Text.style.fontStyle = "normal";
+
+                }
+            });
+
             return;
         }
+
+        AddTaskDone({
+            Undo: () => {
+                Text.style.fontStyle = "normal";
+            },
+            Redo: () => {
+                Text.style.fontStyle = "italic";
+
+            }
+        });
 
         Text.style.fontStyle = "italic";
     }
@@ -36,18 +78,65 @@ function SetTextAsEditable(Text) {
         if (Text.style.textDecoration == "underline") {
             Text.style.textDecoration = "none";
 
+            AddTaskDone({
+                Undo: () => {
+                    Text.style.textDecoration = "none";
+                },
+                Redo: () => {
+                    Text.style.textDecoration = "underline";
+
+                }
+            });
+
             return;
         }
+
+        AddTaskDone({
+            Undo: () => {
+                Text.style.textDecoration = "underline";
+            },
+            Redo: () => {
+                Text.style.textDecoration = "none";
+
+            }
+        });
 
         Text.style.textDecoration = "underline";
     }
 
     function ChangeColor() {
-        Text.style.color = ColorInput.value;
+        const PreviousColor = currentColor;
+        const NewColor = ColorInput.value;
+
+        Text.style.color = NewColor;
+        currentColor = NewColor;
+
+        AddTaskDone({
+            Undo: () => {
+                Text.style.textDecoration = PreviousColor;
+            },
+            Redo: () => {
+                Text.style.textDecoration = NewColor;
+
+            }
+        });
     }
 
     function ChangeSize() {
-        Text.style.fontSize = `${SizeInput.value}px`;
+        const PreviousSize = currentSize;
+        const NewSize = `${SizeInput.value}px`;
+
+        Text.style.fontSize = NewSize;
+        currentSize = NewSize;
+
+        AddTaskDone({
+            Undo: () => {
+                Text.style.textDecoration = PreviousSize;
+            },
+            Redo: () => {
+                Text.style.textDecoration = NewSize;
+            }
+        });
     }
 
     function EnableEditing() {
@@ -136,8 +225,6 @@ function SetTextAsEditable(Text) {
         if (DEBUGGING_MODE) {
             DebugPrint(`The content of the text was changed by: ${TextEdtitingMenu.innerHTML}`);
         }
-
-        //ChangeColor();
     });
 }
 
