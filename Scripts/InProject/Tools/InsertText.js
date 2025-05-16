@@ -15,6 +15,8 @@ function SetTextAsEditable(Text) {
     let currentColor = "#000";
     let currentSize = "16px";
 
+    let previousText = "";
+
     function TurnOnBold() {
         if (Text.style.fontWeight == "bold") {
             Text.style.fontWeight = "normal";
@@ -158,7 +160,6 @@ function SetTextAsEditable(Text) {
     // If the user click twice, the layer will be unselected and the user starts editing the text
     let lastTimeClicked = 0;
 
-
     Text.addEventListener("click", function() {
         const CurrentTime = (new Date()).getTime();
 
@@ -169,8 +170,10 @@ function SetTextAsEditable(Text) {
                 Text.contentEditable = "true";
                 Text.focus();
 
+                previousText = Text.textContent;
+
                 // Enable text edition
-                EnableEditing();
+                EnableEditing(LastText);
 
                 return;
             }
@@ -215,6 +218,17 @@ function SetTextAsEditable(Text) {
 
         // Disable text editing
         TextEdtitingMenu.style.visibility = "hidden";
+
+        const NewText = Text.textContent;
+
+        AddTaskDone({
+            Undo: () => {
+                Text.textContent = previousText;
+            },
+            Redo: () => {
+                Text.textContent = NewText;
+            }
+        });
     
         BoldButton.removeEventListener("mouseup", TurnOnBold);
         ItalicButton.removeEventListener("mouseup", TurnOnItalic);
