@@ -101,21 +101,18 @@ function EnableScaleTool() {
         CornersParent.appendChild(BottomRightCornerDrag);
         CornersParent.appendChild(TopRightCornerDrag);
 
-        const ActualStartingMousePosition = MousePosition;
+        let ActualStartingMousePosition = MousePosition;
         const StartingMousePosition = GetMousePositionInCanvas();
         let previousMousePosition = StartingMousePosition;
-
-        ResizeVisualLine.style.left = `${ActualStartingMousePosition.x}px`;
-        ResizeVisualLine.style.top = `${ActualStartingMousePosition.y}px`;
 
         let clickedOnElement = false;
 
         // Updating line
         function UpdateLineRender() {
-            const currentMousePosition = MousePosition;
+            const differenceX = MousePosition.x - ActualStartingMousePosition.x;
+            const differenceY = MousePosition.y - ActualStartingMousePosition.y;
 
-            const differenceX = currentMousePosition.x - ActualStartingMousePosition.x;
-            const differenceY = currentMousePosition.y - ActualStartingMousePosition.y;
+            console.log(MousePosition)
 
             const theta = Math.atan2(differenceY, differenceX);
             const distance = Math.sqrt(differenceX * differenceX + differenceY * differenceY);
@@ -161,6 +158,10 @@ function EnableScaleTool() {
             if (CurrentToolSelected == "Drag" || CurrentToolSelected == "Rotate") { return; }
 
             startingTransform = LayerSelected.Element.style.transform;
+
+            ActualStartingMousePosition = MousePosition;
+            ResizeVisualLine.style.left = `${ActualStartingMousePosition.x}px`;
+            ResizeVisualLine.style.top = `${ActualStartingMousePosition.y}px`;
 
             window.addEventListener("mousemove", OnMouseMove);
         }
