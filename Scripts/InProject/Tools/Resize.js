@@ -3,6 +3,7 @@ const ScaleToolName = "Scale";
 function EnableScaleTool() {
     const ScaleButton = document.getElementById("rotate");
     const Body = document.getElementsByTagName("body")[0];
+    const ResizeButton = document.getElementById("resize");
 
     // Setting up the squares the resize an element
     const TopLeftCornerDrag = document.createElement("div");
@@ -35,7 +36,9 @@ function EnableScaleTool() {
     BottomRightCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nwse-resize");
     TopRightCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nesw-resize");
 
+    let ResizeVisualLine = null;
 
+    // Initialize the whole behaviour
     function ScaleBehaviour() {
         if (CurrentToolSelected == ScaleToolName){
 
@@ -50,6 +53,21 @@ function EnableScaleTool() {
 
         let startingTransform = "";
 
+        // Creating line
+        if (ResizeVisualLine === null) {
+            ResizeVisualLine = document.createElement("DIV");
+            ResizeVisualLine.style.position = "absolute";
+            ResizeVisualLine.style.backgroundColor = "#FFF";
+            ResizeVisualLine.style.borderColor = "#000";
+            ResizeVisualLine.style.borderWidth = "2px";
+            ResizeVisualLine.style.borderStyle = "solid";
+            ResizeVisualLine.style.width = "100px";
+            ResizeVisualLine.style.height = "3px";
+
+            Body.appendChild(ResizeVisualLine);
+        }
+
+        // Setting up corners
         let CornersParent =  LayerSelected.Element.children[0];
         if (CornersParent == null) {
             const CornersParentParent = document.createElement("div");
@@ -83,11 +101,31 @@ function EnableScaleTool() {
         CornersParent.appendChild(BottomRightCornerDrag);
         CornersParent.appendChild(TopRightCornerDrag);
 
+        const ActualStartingMousePosition = MousePosition;
         const StartingMousePosition = GetMousePositionInCanvas();
         let previousMousePosition = StartingMousePosition;
 
+        ResizeVisualLine.style.left = `${ActualStartingMousePosition.x}px`;
+        ResizeVisualLine.style.top = `${ActualStartingMousePosition.y}px`;
+
         let clickedOnElement = false;
 
+        // Updating line
+        function UpdateLineRender() {
+            const currentMousePosition = MousePosition;
+
+            const differenceX = currentMousePosition.x - ActualStartingMousePosition.x;
+            const differenceY = currentMousePosition.y - ActualStartingMousePosition.y;
+
+            const theta = Math.atan2(differenceY, differenceX);
+            const distance = Math.sqrt(differenceX * differenceX + differenceY * differenceY);
+
+            ResizeVisualLine.style.width = `${Math.floor(distance)}px`;
+            ResizeVisualLine.style.transform = `rotate(${theta}rad)`;
+        }
+        UpdateLineRender();
+
+        // Change the scale of the selected element
         function OnMouseMove() {
             if (!clickedOnElement || LayerSelected == null) { return; }
 
@@ -109,9 +147,12 @@ function EnableScaleTool() {
                 LayerSelected.Element.style.transform += " scale(1)";
             }
 
+            UpdateLineRender();
+
             previousMousePosition = mousePosition;
         }
 
+        // Start rescaling
         function OnMouseDown() {
             clickedOnElement = true;
 
@@ -126,6 +167,7 @@ function EnableScaleTool() {
 
         LayerSelected.Element.addEventListener("mousedown", OnMouseDown);
 
+        // Stop rescaling
         window.addEventListener("mouseup", () => {
             clickedOnElement = false;
 
@@ -149,10 +191,14 @@ function EnableScaleTool() {
             CurrentLayer.removeEventListener("mousedown", OnMouseDown);
             window.removeEventListener("mousemove", OnMouseMove);
             window.removeEventListener("mouseup", arguments.callee);
+
+            ResizeVisualLine.remove();
+            ResizeVisualLine = null;
         });
 
     }
 
+    ResizeButton.addEventListener("mouseup", ScaleBehaviour);
     ScaleButton.addEventListener("click", ScaleBehaviour);
     window.addEventListener("keyup", function(event) {
         if (event.key != "s") { return; }

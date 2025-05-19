@@ -7,7 +7,6 @@ function EnableFullScreenButton() {
     const Canvas = document.getElementById("canvas");
 
     ButtonSeeImage.addEventListener("click", function() {
-
         if (DEBUGGING_MODE) {
             DebugPrint("Opeing full screen div.");
         }

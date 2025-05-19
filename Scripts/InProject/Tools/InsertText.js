@@ -173,7 +173,7 @@ function SetTextAsEditable(Text) {
                 previousText = Text.textContent;
 
                 // Enable text edition
-                EnableEditing(LastText);
+                EnableEditing(Text);
 
                 return;
             }

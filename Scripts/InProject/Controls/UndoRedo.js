@@ -50,6 +50,12 @@ function AddTaskDone(task) {
 function EnableUndoRedo() {
     let isControlPressed = false;
 
+    const UndoButton = document.getElementById("undo");
+    const RedoButton = document.getElementById("redo");
+
+    UndoButton.addEventListener("mouseup", Undo);
+    RedoButton.addEventListener("mouseup", Redo);
+
     window.addEventListener("keyup", function(event) {
         switch(event.key) {
             case "z":
