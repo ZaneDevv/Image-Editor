@@ -87,9 +87,7 @@ function EnableScaleTool() {
         CornersParent.appendChild(BottomRightCornerDrag);
         CornersParent.appendChild(TopRightCornerDrag);
 
-        let ActualStartingMousePosition = MousePosition;
         const StartingMousePosition = GetMousePositionInCanvas();
-        let previousMousePosition = StartingMousePosition;
 
         let clickedOnElement = false;
 
@@ -116,7 +114,6 @@ function EnableScaleTool() {
                 LayerSelected.Element.style.transform += " scale(1)";
             }
 
-            previousMousePosition = mousePosition;
         }
 
         // Start rescaling
@@ -161,9 +158,6 @@ function EnableScaleTool() {
             CurrentLayer.removeEventListener("mousedown", OnMouseDown);
             window.removeEventListener("mousemove", OnMouseMove);
             window.removeEventListener("mouseup", arguments.callee);
-
-            ResizeVisualLine.remove();
-            ResizeVisualLine = null;
         });
 
     }
