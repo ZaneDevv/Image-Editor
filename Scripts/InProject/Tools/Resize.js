@@ -1,6 +1,8 @@
 const ScaleToolName = "Scale";
 
 function EnableScaleTool() {
+    const REGEX_TRANSFORM_EXTRACT_SCALE = /scale\(([^)]+)\)/;
+
     const ScaleButton = document.getElementById("rotate");
     const Body = document.getElementsByTagName("body")[0];
     const ResizeButton = document.getElementById("resize");
@@ -107,12 +109,12 @@ function EnableScaleTool() {
 
         let clickedOnElement = false;
 
+        let startingScale = 1;
+
         // Updating line
         function UpdateLineRender() {
             const differenceX = MousePosition.x - ActualStartingMousePosition.x;
             const differenceY = MousePosition.y - ActualStartingMousePosition.y;
-
-            console.log(MousePosition)
 
             const theta = Math.atan2(differenceY, differenceX);
             const distance = Math.sqrt(differenceX * differenceX + differenceY * differenceY);
@@ -132,14 +134,12 @@ function EnableScaleTool() {
             const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
             const dotProduct = (deltaX - deltaY) / (distance * SQRT_2);
 
-            let currentTransform = LayerSelected.Element.style.transform;
-            let scaleMatch = currentTransform.match(/scale\(([^)]+)\)/);
+            let scaleMatch = LayerSelected.Element.style.transform.match(REGEX_TRANSFORM_EXTRACT_SCALE);
 
             if (scaleMatch) {
-                let currentScale = parseFloat(scaleMatch[1]);
-                let newScale = Min(currentScale + distance / 500 * dotProduct, 0.2);
-
-                LayerSelected.Element.style.transform = currentTransform.replace(/scale\([^)]+\)/, `scale(${newScale})`);
+                let newScale = Min(startingScale + distance / 500 * dotProduct, 0.2);
+                
+                LayerSelected.Element.style.transform = LayerSelected.Element.style.transform.replace(REGEX_TRANSFORM_EXTRACT_SCALE, `scale(${newScale})`);
             } else {
                 LayerSelected.Element.style.transform += " scale(1)";
             }
@@ -162,6 +162,9 @@ function EnableScaleTool() {
             ActualStartingMousePosition = MousePosition;
             ResizeVisualLine.style.left = `${ActualStartingMousePosition.x}px`;
             ResizeVisualLine.style.top = `${ActualStartingMousePosition.y}px`;
+            
+            let scaleMatch = LayerSelected.Element.style.transform.match(REGEX_TRANSFORM_EXTRACT_SCALE);
+            startingScale = scaleMatch != null ? parseFloat(scaleMatch[1]) : 1; 
 
             window.addEventListener("mousemove", OnMouseMove);
         }
@@ -199,6 +202,7 @@ function EnableScaleTool() {
 
     }
 
+    // Adding evenets
     ResizeButton.addEventListener("mouseup", ScaleBehaviour);
     ScaleButton.addEventListener("click", ScaleBehaviour);
     window.addEventListener("keyup", function(event) {
