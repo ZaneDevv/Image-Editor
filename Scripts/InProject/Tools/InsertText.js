@@ -258,6 +258,8 @@ function EnableInsertText() {
             CurrentToolSelected = null;
             Body.style.cursor = "default";
 
+            canInsertText = true;
+
             if (DEBUGGING_MODE) {
                 DebugPrint("Unselecting insert text tool.");
             }
