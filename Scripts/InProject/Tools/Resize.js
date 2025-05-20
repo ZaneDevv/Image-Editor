@@ -38,8 +38,6 @@ function EnableScaleTool() {
     BottomRightCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nwse-resize");
     TopRightCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nesw-resize");
 
-    let ResizeVisualLine = null;
-
     // Initialize the whole behaviour
     function ScaleBehaviour() {
         if (CurrentToolSelected == ScaleToolName){
@@ -54,20 +52,6 @@ function EnableScaleTool() {
         LayerSelected.Element.style.borderStyle = "dashed";
 
         let startingTransform = "";
-
-        // Creating line
-        if (ResizeVisualLine === null) {
-            ResizeVisualLine = document.createElement("DIV");
-            ResizeVisualLine.style.position = "absolute";
-            ResizeVisualLine.style.backgroundColor = "#FFF";
-            ResizeVisualLine.style.borderColor = "#000";
-            ResizeVisualLine.style.borderWidth = "2px";
-            ResizeVisualLine.style.borderStyle = "solid";
-            ResizeVisualLine.style.width = "100px";
-            ResizeVisualLine.style.height = "3px";
-
-            Body.appendChild(ResizeVisualLine);
-        }
 
         // Setting up corners
         let CornersParent =  LayerSelected.Element.children[0];
@@ -111,18 +95,6 @@ function EnableScaleTool() {
 
         let startingScale = 1;
 
-        // Updating line
-        function UpdateLineRender() {
-            const differenceX = MousePosition.x - ActualStartingMousePosition.x;
-            const differenceY = MousePosition.y - ActualStartingMousePosition.y;
-
-            const theta = Math.atan2(differenceY, differenceX);
-            const distance = Math.sqrt(differenceX * differenceX + differenceY * differenceY);
-
-            ResizeVisualLine.style.width = `${Math.floor(distance)}px`;
-            ResizeVisualLine.style.transform = `rotate(${theta}rad)`;
-        }
-        UpdateLineRender();
 
         // Change the scale of the selected element
         function OnMouseMove() {
@@ -144,8 +116,6 @@ function EnableScaleTool() {
                 LayerSelected.Element.style.transform += " scale(1)";
             }
 
-            UpdateLineRender();
-
             previousMousePosition = mousePosition;
         }
 
@@ -158,10 +128,6 @@ function EnableScaleTool() {
             if (CurrentToolSelected == "Drag" || CurrentToolSelected == "Rotate") { return; }
 
             startingTransform = LayerSelected.Element.style.transform;
-
-            ActualStartingMousePosition = MousePosition;
-            ResizeVisualLine.style.left = `${ActualStartingMousePosition.x}px`;
-            ResizeVisualLine.style.top = `${ActualStartingMousePosition.y}px`;
             
             let scaleMatch = LayerSelected.Element.style.transform.match(REGEX_TRANSFORM_EXTRACT_SCALE);
             startingScale = scaleMatch != null ? parseFloat(scaleMatch[1]) : 1; 

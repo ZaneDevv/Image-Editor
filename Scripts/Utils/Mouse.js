@@ -4,7 +4,7 @@ const CanvasDiv = document.getElementById("canvas");
 
 // Updating mouse's positions
 document.addEventListener('mousemove', function(event) {
-    // Having in mind the scroll position 
+    // Bearing in mind the scroll position 
     if (event.pageX == null && event.clientX != null) {
         eventDoc = (event.target && event.target.ownerDocument) || document;
         doc = eventDoc.documentElement;

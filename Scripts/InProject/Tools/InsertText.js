@@ -27,7 +27,6 @@ function SetTextAsEditable(Text) {
                 },
                 Redo: () => {
                     Text.style.fontWeight = "normal";
-
                 }
             });
 
