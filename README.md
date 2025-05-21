@@ -1,6 +1,6 @@
 # 🖌️ Image Editor
 
-Welcome to the **Image Editor**! This is a simple, open-source web-based image editor that allows you to edit images directly in your browser with no need for frameworks. The editor is built using just **HTML**, **CSS**, and **JavaScript**. It's a lightweight tool that offers basic image manipulation features similar to Photoshop but with a simpler interface, perfect for quick edits.
+Welcome to my **Image Editor**! This is a simple, open-source web-based image editor that allows you to edit images directly in your browser. The editor is built using exclusively **HTML**, **CSS**, and **JavaScript**.
 
 All images and fonts used in this project are sourced from [Google Fonts](https://fonts.google.com/icons) and the text font used is **[Dancing Script](https://fonts.google.com/specimen/Dancing+Script)**.
 
