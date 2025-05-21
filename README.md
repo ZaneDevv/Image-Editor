@@ -148,14 +148,4 @@ To prevent you from accidentally losing your work, you will receive a warning if
 
 ---
 
-## Contributing
-
-Feel free to fork the repository, submit issues, or create pull requests to enhance the project. If you have any suggestions or improvements, they are always welcome!
-
-## License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
----
-
 Happy editing!
