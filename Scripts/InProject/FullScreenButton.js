@@ -11,22 +11,31 @@ function EnableFullScreenButton() {
             DebugPrint("Opeing full screen div.");
         }
 
+        const ScreenWidth = window.screen.width;
+        const ScreenHeight = window.screen.height;
+
         FullScreenDiv.style.visibility = "visible";
 
         Body.style.cursor = "none";
 
         const Image = Canvas.cloneNode(true);
+        FullScreenDiv.appendChild(Image);
+
+        const ComputedStyle = getComputedStyle(Image);
+        const ImageWidth = parseInt(ComputedStyle.width, 10);
+        const ImageHeight = parseInt(ComputedStyle.height, 10);
+
+        const ScaleX = ScreenWidth / ImageWidth;
+        const ScaleY = ScreenHeight / ImageHeight;
+
+        const ScaleFactor = Min(ScaleX, ScaleY);
+
         Image.style.position = "absolute";
+        Image.style.left = "50%";
         Image.style.top = "50%";
         Image.style.left = "50%";
-        Image.style.transform = "translate(-50%, -50%)";
-        Image.style.width = "auto";
-        Image.style.height = "auto";
-        Image.style.maxWidth = "100%";
-        Image.style.maxHeight = "100%";
-        Image.style.objectFit = "contain";
+        Image.style.transform = `transform(-50% , -50%) scale(${ScaleFactor})`;
 
-        FullScreenDiv.appendChild(Image);
     })
 
     window.addEventListener("keyup", function(event) {
