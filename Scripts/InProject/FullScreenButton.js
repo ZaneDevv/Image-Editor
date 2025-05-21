@@ -22,20 +22,19 @@ function EnableFullScreenButton() {
         FullScreenDiv.appendChild(Image);
 
         const ComputedStyle = getComputedStyle(Image);
+
         const ImageWidth = parseInt(ComputedStyle.width, 10);
         const ImageHeight = parseInt(ComputedStyle.height, 10);
-
+        
         const ScaleX = ScreenWidth / ImageWidth;
         const ScaleY = ScreenHeight / ImageHeight;
 
-        const ScaleFactor = Min(ScaleX, ScaleY);
+        const ScaleFactor = Max(ScaleX, ScaleY);
 
         Image.style.position = "absolute";
         Image.style.left = "50%";
         Image.style.top = "50%";
-        Image.style.left = "50%";
-        Image.style.transform = `transform(-50% , -50%) scale(${ScaleFactor})`;
-
+        Image.style.transform = `translate(-50%, -50%) scale(${ScaleFactor})`;
     })
 
     window.addEventListener("keyup", function(event) {
