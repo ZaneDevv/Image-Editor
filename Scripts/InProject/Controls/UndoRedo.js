@@ -5,7 +5,7 @@ function Undo() {
     if (UndoStack.length == 0) { // Cannot work without tasks done
 
         if (DEBUGGING_MODE) {
-            ErrorPrint("There's no tasks in the undo stack.");
+            ErrorPrint("There are no tasks in the undo stack.");
         }
 
         return;
@@ -24,7 +24,7 @@ function Redo() {
     if (RedoStack.length == 0) { // Cannot work without any undo done
 
         if (DEBUGGING_MODE) {
-            ErrorPrint("There's no tasks in the redo stack.");
+            ErrorPrint("There are no tasks in the redo stack.");
         }
 
         return;

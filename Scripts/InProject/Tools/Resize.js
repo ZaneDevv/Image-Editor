@@ -33,11 +33,6 @@ function EnableScaleTool() {
     TopRightCornerDrag.style.top = 0;
     TopRightCornerDrag.style.left = "100%";
 
-    TopLeftCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nwse-resize");
-    BottomLeftCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nesw-resize");
-    BottomRightCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nwse-resize");
-    TopRightCornerDrag.addEventListener("mouseenter", () => Body.style.cursor = "nesw-resize");
-
     // Initialize the whole behaviour
     function ScaleBehaviour() {
         if (CurrentToolSelected == ScaleToolName){
@@ -108,12 +103,13 @@ function EnableScaleTool() {
 
             if (scaleMatch) {
                 let newScale = Min(startingScale + distance / 500 * dotProduct, 0.2);
-                
                 LayerSelected.Element.style.transform = LayerSelected.Element.style.transform.replace(REGEX_TRANSFORM_EXTRACT_SCALE, `scale(${newScale})`);
-            } else {
+            }
+            else {
                 LayerSelected.Element.style.transform += " scale(1)";
             }
 
+            Body.style.cursor = "none";
         }
 
         // Start rescaling
@@ -158,8 +154,15 @@ function EnableScaleTool() {
             CurrentLayer.removeEventListener("mousedown", OnMouseDown);
             window.removeEventListener("mousemove", OnMouseMove);
             window.removeEventListener("mouseup", arguments.callee);
-        });
 
+            if (LayerSelected) {
+                LayerSelected.Element.style.borderStyle = "solid";
+                LayerSelected.Element.children[0].remove();
+            }
+            
+            Body.style.cursor = "default";
+        });
+        
     }
 
     // Adding evenets
