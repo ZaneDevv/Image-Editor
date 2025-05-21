@@ -1,116 +1,161 @@
-# 🖌️ Image-Editor
+# 🖌️ Image Editor
 
-This is a simple and open source project to edit imges in web full made by me from scratch. The idea was to make a simple image editor such as pohotoshop that allows you to edit using only a web browser any image at a simple level.
-The target also was make it without any kind of framework, using only the simple HTML, CSS and JavaScript codes.
+Welcome to the **Image Editor**! This is a simple, open-source web-based image editor that allows you to edit images directly in your browser with no need for frameworks. The editor is built using just **HTML**, **CSS**, and **JavaScript**. It's a lightweight tool that offers basic image manipulation features similar to Photoshop but with a simpler interface, perfect for quick edits.
 
-All the images used in this project were obteined from [`fonts.google`](https://fonts.google.com/icons) like the text font, which is [`Dancing Script`](https://fonts.google.com/specimen/Dancing+Script?query=Dancing+Script)
+All images and fonts used in this project are sourced from [Google Fonts](https://fonts.google.com/icons) and the text font used is **[Dancing Script](https://fonts.google.com/specimen/Dancing+Script)**.
 
-Feautures:
-<ul>
-    <li>Create a project by specifing the size of the canvas</li>
-    <li>Create a project by importing a background image</li>
-    <li>Import text</li>
-    <li>Import images</li>
-    <li>Layers</li>
-    <li>Dragging</li>
-    <li>Rotate</li>
-    <li>Color</li>
-    <li>Zoom in/out</li>
-    <li>Moving canvas</li>
-    <li>Copy & paste</li>
-    <li>Full screen</li>
-    <li>Warning messages when you are editing an image and you tried to either close or refresh the window</li>
-</ul>
+## Features
 
-#
+- **Create New Projects**:
+  - Create a project by specifying the size of the canvas.
+  - Create a project by importing a background image.
 
-### Creating project
+- **Text**:
+  - Add, edit, and format text (change font size, color, bold, italic, etc.).
+  - Supports inserting text directly on the canvas or via the left-hand panel.
 
-When you need to create a new project, you have two clar options: either you create a new canvas from scratch by specifing its width and height or you import a image you have downloaded on your device.
+- **Images**:
+  - Import images from your device and add them to your project.
+
+- **Layers**:
+  - Manage your project in layers.
+  - Select, drag, and delete layers.
+  - Use the keyboard arrow keys to navigate through layers.
+
+- **Drag**: 
+  - Move objects around the canvas by clicking and dragging them.
+
+- **Rotate**:
+  - Rotate selected layers by holding down the mouse button and moving the mouse.
+  
+- **Color**:
+  - Select colors for text and elements directly from the color picker.
+
+- **Zoom**:
+  - Zoom in and out of the canvas using the mouse wheel (with Shift key) or via zoom buttons at the top of the screen.
+
+- **Canvas Movement**:
+  - Move around the canvas by holding down the mouse wheel and dragging.
+
+- **Copy & Paste**:
+  - Easily duplicate elements on the canvas with **Ctrl + C** and **Ctrl + V**.
+
+- **Full-Screen Mode**:
+  - View and edit your project in full-screen mode, and return to normal mode with the **Escape** key.
+
+- **Warning on Close/Refresh**:
+  - Receive a warning message when trying to close or refresh the window, ensuring you don’t lose any progress.
+
+## How to Use
+
+### Creating a Project
+
+You have two options to start a new project:
+
+1. **Create a Canvas from Scratch**: Specify the width and height of the canvas.
+2. **Import an Image**: Import an image from your device to use as a background.
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/4468edc0-4acf-40d9-bad6-5014bef40b04" width="70%" />
   <img src="https://github.com/user-attachments/assets/3582169d-cea3-406f-bb36-35afaefe36fb" />
 </div>
 
-#
+### Adding Text
 
-### Text
+To add text, you can either:
 
-To insert a text you have two options: either you click on the canvas afer press the T key or go to the left panel, click on the text button (the first one with the double T) and click again on the canvas. In this way, you can write whatever you want.
-Once you have a text on the canvas, you can click twice over it to change its content.
-You can also edit the text (color, size, bold, italic, underline...) when you are in edit mode (writing the text).
+- Press the **T** key, then click on the canvas to start typing.
+- Alternatively, click on the **Text** button (the one with two "T"s) on the left panel and then click on the canvas to start typing.
+
+Once you’ve added text, you can edit it by double-clicking on the text box. You can also change the text color, size, style (bold, italic, underline), etc.
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/54677549-02d7-40e0-9945-a7037f61d260" width="70%" />
 </div>
 
-#
+### Importing Images
 
-### Images
+To import an image:
 
-You also can import an image from your device by press quickly twice the I button from the keyboard pressing the control key or by the image button on the left-hand side of the screen.
+1. Double-press the **I** key while holding the **Control** key, or
+2. Click on the **Image** button in the left-hand panel, then select an image from your device.
 
-#
+### Working with Layers
 
-### Layers
+On the left panel, you'll find the **Layers** section. Each object in the project has a corresponding layer. You can:
 
-On the left-hand side of the screen, you will see a menu with the title "Layers" which is where you can work with the layers as you might guessed.
-You can select each one and see with a blue border which is the object that this layer belongs to. Also, you can click on the object in the canvas to select it and work with it, being both the object and its layers highlighted.
-By selecting the layer, you can drag by moving the mouse after keep clicking on it for a second and remove it by pressing the delete ket on the keyboard.
-I also added a feature that allows you to move through the layers by using the arrow keys on your keyboard very easily.
+- Select a layer by clicking on it.
+- Highlight layers by selecting the object in the canvas (both the layer and the object will be highlighted).
+- Drag layers around by clicking and holding for a moment before moving the mouse.
+- Delete layers by selecting them and pressing the **Delete** key.
+
+Additionally, you can navigate between layers using the arrow keys on your keyboard.
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/b35dce05-080e-41c1-8729-fc082d2fcf51" width="70%" />
 </div>
 
-#
+### Dragging Objects
 
-### Drag
+If you want to move an object, simply click and drag it across the canvas.
 
-A quite important feature I had to add no matter what is the drag. You will see some objects where you don't want to see them, so you can drag them and change its position on the canvas.
+### Rotating Objects
 
-#
+To rotate a layer:
 
-### Rotate
+- Press the **R** key, or click on the **Rotate** button in the left panel.
+- While holding down the mouse button, move the mouse to rotate the selected layer.
 
-By either pressing the R key on the keyboard or clicking on the rotate button on the left-hand side of the screen, you will be able to rotate a selected layer just by moving around the mouse while the click is kept.
+### Changing Color
 
-#
+You can change the color of your text and other elements by:
 
-### Color
+- Clicking the **Color** button in the left panel.
+- Selecting a color from the color picker.
+- If a layer with text is selected, the color of the text will change to the new color.
 
-On the left-hand side of the screen there is a color button as well. Once you click on it, you can pick a color so the next text you insert on the canvas will be in that color. Additionally, if when you are picking a color you are also selecting a layer with text, the color of that text will change to that new color.
+### Zoom In/Out
 
-#
+To zoom in or out of the canvas:
 
-### Zoom in and out
+- Hold down the **Shift** key and use the mouse wheel to zoom.
+- Alternatively, use the zoom in and zoom out buttons at the top of the screen.
 
-If you use the wheel of the mouse while the shift button is being pressed, you will zoom in or out depending of the directing you are moving the wheel of the mouse.
-On top of the screen, there are also a couple of buttons to zoom in and zoom out in case you don't count with a keyboard or mouse.
-Between these buttons, there is a number that represents how much you are zooming in or out.
+You can also see the zoom level displayed between the zoom buttons.
 
-#
+### Moving the Canvas
 
-### Moving canvas
+To move around the canvas:
 
-When you hold the click on the mouse's wheel button and you move the mouse, you will see that you will move around the canvas.
+- Hold down the **middle mouse button** (mouse wheel) and drag the canvas to move it.
 
-#
+### Copy & Paste
 
-### Copy & paste
+To duplicate an element:
 
-As most of the softwares, I added the possibility of copying `(Control + C)` a selected element and paste it `(Control + V)` to duplicate it.
+- Select the element and press **Ctrl + C** to copy it.
+- Press **Ctrl + V** to paste it.
 
-#
+### Full-Screen Mode
 
-### Full screen
+You can view your project in full-screen mode by clicking the **Full-Screen** button at the top right of the screen. To exit full-screen mode, press the **Escape** key.
 
-On top of the screen, on the right-hand side, there is a button that once you click on it, the image you are editing will display in full screen. Once you entered in that mode, by pressing on the escape button you can go back to the edit mode again.
-However, this is only for the edit mode, what means that if you have not created any project yet, not even the button will show up. 
+Note: The **Full-Screen** button will only be visible if you’ve already created a project.
 
-#
+### Warning on Closing or Refreshing
 
-### Warning messages when you try to either close or refresh the window
+To prevent you from accidentally losing your work, you will receive a warning if you try to close or refresh the window while editing an image.
 
-When you are working, it is pretty annoying pressing either the refresh button or the close button loosing all the work done. To avoid it, I added a message when you do it asking wether you really meant to do that task, giving the possibility to cancel it and don't loose the whole process.
+---
+
+## Contributing
+
+Feel free to fork the repository, submit issues, or create pull requests to enhance the project. If you have any suggestions or improvements, they are always welcome!
+
+## License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+Happy editing!
