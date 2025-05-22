@@ -1,0 +1,37 @@
+.picture {
+    width: 20%;
+    height: 170px;
+
+    margin: 0;
+
+    position: relative;
+}
+
+.picture, .picture div {
+    border-radius: 10px;
+    
+    background-color: var(--dark-color);
+    box-shadow: 0px 1px 5px 0px var(--light-color);
+}
+
+.picture div {
+    width: 90%;
+    height: 120px;
+
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 12px;
+}
+
+.picture p {
+    position: absolute;
+
+    text-align: center;
+
+    margin: 0;
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translate(-50%, -50%);
+}
