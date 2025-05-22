@@ -92,7 +92,7 @@ On the left panel, you'll find the **Layers** section. Each object in the projec
 Additionally, you can navigate between layers using the arrow keys on your keyboard.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/b35dce05-080e-41c1-8729-fc082d2fcf51" width="70%" />
+  <img src="https://github.com/user-attachments/assets/b35dce05-080e-41c1-8729-fc082d2fcf51" width="40%" />
 </div>
 
 ### Dragging Objects
