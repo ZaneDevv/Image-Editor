@@ -73,4 +73,4 @@ function SetAsDraggable(object) {
         Body.style.cursor = "default";
         CurrentToolSelected = null;
     })
-}
+}   
