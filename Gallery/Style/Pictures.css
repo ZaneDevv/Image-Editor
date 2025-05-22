@@ -1,6 +1,8 @@
 .picture {
     width: 20%;
     height: 170px;
+    max-width: 250px;
+    min-width: 200px;
 
     margin: 0;
 
