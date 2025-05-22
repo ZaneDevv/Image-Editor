@@ -11,6 +11,8 @@ function EnableFullScreenButton() {
             DebugPrint("Opeing full screen div.");
         }
 
+        GoFullScreen(true);
+
         const ScreenWidth = window.screen.width;
         const ScreenHeight = window.screen.height;
 
@@ -38,12 +40,14 @@ function EnableFullScreenButton() {
     })
 
     window.addEventListener("keyup", function(event) {
-        if (event.key != "Escape") { return; }
+        if (event.key !== "Escape") { return; }
 
         Body.style.cursor = "default";
 
         FullScreenDiv.style.visibility = "hidden";
         FullScreenDiv.children[0].remove();
+
+        GoFullScreen(false);
 
         if (DEBUGGING_MODE) {
             DebugPrint("Exited from full screen mode.");
