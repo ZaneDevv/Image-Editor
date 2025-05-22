@@ -49,7 +49,7 @@ a[link] {
 
 /* Remove annoying drags and selections */
 * {
-    user-drag: none;
+    -user-drag: none;
     -webkit-user-drag: none;
     -moz-user-drag: none;
     -ms-user-drag: none;
