@@ -1,6 +1,7 @@
 const CreateProjectMenu = document.querySelector("#image-content > div[specifications-request]");
 const BackgroundCanvas = document.querySelector("#image-content > div[editing-image]");
 const Canvas = document.getElementById("canvas");
+const GalleryButton = document.getElementById("gallery");
 
 const ButtonSeeImage = document.querySelector("header > button");
 
@@ -18,6 +19,8 @@ function CreateProject(width, height, image) {
 
     Canvas.style.width = `${width}px`;
     Canvas.style.height = `${height}px`;
+
+    GalleryButton.style.left = "90%";
 
     if (image != null) { // Checking if the user has a background image
         Canvas.appendChild(image);

@@ -1,0 +1,25 @@
+#gallery {
+    position: relative;
+
+    transform: translate(-50%, -50%);
+
+    left: 98%;
+    height: 60%;
+
+    margin: 0;
+}
+
+#gallery:hover {
+    animation: hover-animation-gallery-button var(--hover-animation-time) var(--hover-animation-bezier);
+    height: 62%;
+}
+
+@keyframes hover-animation-gallery-button {
+    from {
+        height: 60%;
+    }
+
+    to {
+        height: 62%;
+    }
+}
