@@ -2,9 +2,16 @@ function EnableSave() {
     let isControlPressed = false;
 
     const SaveButton = document.getElementById("save");
+    const Canvas = document.getElementById("canvas")
 
+    const formData = new FormData();
+    formData.append("Layers", Canvas.innerHTML);
+    
     function Save() {
-        fetch("Scripts/Save.php")
+        fetch("Scripts/Save.php", {
+            method: 'POST',
+            body: formData
+        })
         .then(response => response.json())
         .then(data => {
             if (data.status === "success") {
@@ -24,6 +31,8 @@ function EnableSave() {
     window.addEventListener("keyup", function(event) {
         switch(event.key) {
             case "s":
+                event.preventDefault();
+
                 if (isControlPressed) {
                     Save();
                 }

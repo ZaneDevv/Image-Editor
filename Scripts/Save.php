@@ -1,25 +1,29 @@
 <?php
 
-if (!is_dir("../Saved")) {
-    mkdir("../Saved", 0777, true);
-}
+if (isset($_POST["Layers"])) {
+    $layersContent = $_POST["Layers"];
 
-$file = fopen("../Saved/testing.txt", "w");
+    if (!is_dir("../Saved")) {
+        mkdir("../Saved", 0777, true);
+    }
 
-if ($file) {
-    fwrite($file, "Testing file");
-    fclose($file);
+    $file = fopen("../Saved/testing.txt", "w");
 
-    echo json_encode([
-        "status" => "success",
-        "message" => "File created."
-    ]);
-}
-else {
-    echo json_encode([
-        "status" => "error",
-        "message" => "Unable to create file."
-    ]);
+    if ($file) {
+        fwrite($file, $layersContent);
+        fclose($file);
+
+        echo json_encode([
+            "status" => "success",
+            "message" => "File created."
+        ]);
+    }
+    else {
+        echo json_encode([
+            "status" => "error",
+            "message" => "Unable to create file."
+        ]);
+    }
 }
 
 ?>
