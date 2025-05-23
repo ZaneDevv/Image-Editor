@@ -1,0 +1,24 @@
+#return {
+    position: absolute;
+    
+    top: 50%;
+    right: 2%;
+    transform: translate(-50%, -50%);
+
+    height: 60%;
+}
+
+#return:hover {
+    animation: return-button-hover var(--hover-animation-time) var(--hover-animation-bezier);
+    height: 65%;
+}
+
+@keyframes return-button-hover {
+    from {
+        height: 60%;
+    }
+
+    to {
+        height: 65%;
+    }
+}
