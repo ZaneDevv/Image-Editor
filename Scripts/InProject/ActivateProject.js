@@ -18,4 +18,5 @@ function EnableProjectEditing() {
     EnableRotationTool();
     EnableColorSelection();
     EnableScaleTool();
+    EnableSave();
 }
