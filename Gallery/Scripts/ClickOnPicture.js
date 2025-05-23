@@ -7,6 +7,8 @@
     const WAIT_TIME = 1/60; 
 
     async function RemoveDarkScreen() {
+        Body.style.overflow = "scroll";
+
         for (let t = 0; t <= 1; t += ADDING_TO_ITERATIONS) {
             DarkScreen.style.opacity = Lerp(0.5, 0, InverseQuadraticLerp(t));
 
@@ -16,15 +18,13 @@
         DarkScreen.style.opacity = 0;
         DarkScreen.style.visibility = "hidden";
 
-        Body.style.overflow = "scroll";
-
         DarkScreen.removeEventListener("mouseup", RemoveDarkScreen);
     }
 
     async function SetDarkScreen() {
-        DarkScreen.style.position = "fixed";
+        DarkScreen.style.opacity = 0.001;
         DarkScreen.style.visibility = "visible";
-        DarkScreen.style.opacity = 0;
+        DarkScreen.style.position = "fixed";
 
         Body.style.overflow = "hidden";
 
