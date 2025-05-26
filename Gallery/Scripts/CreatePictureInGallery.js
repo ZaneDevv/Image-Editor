@@ -1,4 +1,5 @@
 const ParentGrid = document.getElementById("grid-div");
+const FullScreenCover = document.getElementById("full-screen-cover");
 
 const REGEX_TRANSFORM_EXTRACT_SCALE = /scale\(([^)]+)\)/;
 
@@ -72,6 +73,28 @@ function SetUpGallery() {
         Elements.InsideCanvas.style.top = 0;
         Elements.InsideCanvas.style.boxShadow = "0px 0px 0px 0px #00000000";
         Elements.InsideCanvas.style.position = "absolute";
+
+        Elements.MainDiv.addEventListener("mouseup", function(){
+            SetDarkScreen();
+
+            const ComputedStyleImage = getComputedStyle(Elements.InsideCanvas.children[0]);
+            const ComputedStyleParentDiv = getComputedStyle(DarkScreen);
+
+            const ImageWidth = parseInt(ComputedStyleImage.width, 10);
+            const ImageHeight = parseInt(ComputedStyleImage.height, 10);
+
+            const ParentDivWidth = parseInt(ComputedStyleParentDiv.width, 10);
+            const ParentDivHeight = parseInt(ComputedStyleParentDiv.height, 10);
+            
+            const ScaleX = ParentDivWidth / ImageWidth;
+            const ScaleY = ParentDivHeight / ImageHeight;
+
+            const ScaleFactor = Max(ScaleX, ScaleY);
+
+            const newCanvas = Elements.InsideCanvas.cloneNode(true);
+            newCanvas.style.transform = `scale(${ScaleFactor})`;
+            DarkScreen.appendChild(newCanvas);
+        })
 
     })
     .catch(err => {

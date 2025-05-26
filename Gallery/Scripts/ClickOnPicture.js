@@ -1,45 +1,40 @@
-{
-    const Pictures = document.querySelectorAll(".picture");
-    const DarkScreen = document.getElementById("make-screen-darker");
-    const Body = document.querySelectorAll("body")[0];
 
-    const ADDING_TO_ITERATIONS = 1/20;
-    const WAIT_TIME = 1/60; 
+const Pictures = document.querySelectorAll(".picture");
+const DarkScreen = document.getElementById("make-screen-darker");
+const Body = document.querySelectorAll("body")[0];
 
-    async function RemoveDarkScreen() {
-        Body.style.overflow = "scroll";
+const ADDING_TO_ITERATIONS = 1/20;
+const WAIT_TIME = 1/60; 
 
-        for (let t = 0; t <= 1; t += ADDING_TO_ITERATIONS) {
-            DarkScreen.style.opacity = Lerp(0.5, 0, InverseQuadraticLerp(t));
+async function RemoveDarkScreen() {
+    Body.style.overflow = "scroll";
 
-            await delay(WAIT_TIME);
-        }
+    for (let t = 0; t <= 1; t += ADDING_TO_ITERATIONS) {
+        DarkScreen.style.opacity = Lerp(0.5, 0, InverseQuadraticLerp(t));
 
-        DarkScreen.style.opacity = 0;
-        DarkScreen.style.visibility = "hidden";
-
-        DarkScreen.removeEventListener("mouseup", RemoveDarkScreen);
+        await delay(WAIT_TIME);
     }
 
-    async function SetDarkScreen() {
-        DarkScreen.style.opacity = 0.001;
-        DarkScreen.style.visibility = "visible";
-        DarkScreen.style.position = "fixed";
+    DarkScreen.style.opacity = 0;
+    DarkScreen.style.visibility = "hidden";
 
-        Body.style.overflow = "hidden";
+    DarkScreen.removeEventListener("mouseup", RemoveDarkScreen);
+}
 
-        for (let t = 0; t <= 1; t += ADDING_TO_ITERATIONS) {
-            DarkScreen.style.opacity = Lerp(0, 0.5, InverseQuadraticLerp(t));
+async function SetDarkScreen() {
+    DarkScreen.style.opacity = 0.001;
+    DarkScreen.style.visibility = "visible";
+    DarkScreen.style.position = "fixed";
 
-            await delay(WAIT_TIME);
-        }
+    Body.style.overflow = "hidden";
 
-        DarkScreen.style.opacity = 0.5;
+    for (let t = 0; t <= 1; t += ADDING_TO_ITERATIONS) {
+        DarkScreen.style.opacity = Lerp(0, 0.5, InverseQuadraticLerp(t));
 
-        DarkScreen.addEventListener("mouseup", RemoveDarkScreen);
+        await delay(WAIT_TIME);
     }
 
-    Pictures.forEach(picture => {
-        picture.addEventListener("mouseup", SetDarkScreen);
-    });
+    DarkScreen.style.opacity = 0.5;
+
+    DarkScreen.addEventListener("mouseup", RemoveDarkScreen);
 }
