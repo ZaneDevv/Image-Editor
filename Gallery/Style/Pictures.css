@@ -23,6 +23,9 @@
     margin-right: auto;
     margin-left: auto;
     margin-top: 12px;
+
+    display: block;
+    position: relative;
 }
 
 .picture p {
@@ -38,7 +41,7 @@
     transform: translate(-50%, -50%);
 }
 
-.picture:hover, .picture:hover div {
+.picture:hover, .picture:hover > div {
     cursor: pointer;
 
     animation: hover-picture-animation var(--hover-animation-time) var(--hover-animation-bezier);

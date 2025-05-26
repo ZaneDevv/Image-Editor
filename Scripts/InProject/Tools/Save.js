@@ -4,10 +4,11 @@ function EnableSave() {
     const SaveButton = document.getElementById("save");
     const Canvas = document.getElementById("canvas")
 
-    const formData = new FormData();
-    formData.append("Layers", Canvas.innerHTML);
     
     function Save() {
+        const formData = new FormData();
+        formData.append("Layers", Canvas.innerHTML);
+        
         fetch("Scripts/Save.php", {
             method: 'POST',
             body: formData
