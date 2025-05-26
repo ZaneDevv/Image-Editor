@@ -92,7 +92,10 @@ function SetUpGallery() {
             const ScaleFactor = Max(ScaleX, ScaleY);
 
             const newCanvas = Elements.InsideCanvas.cloneNode(true);
-            newCanvas.style.transform = `scale(${ScaleFactor})`;
+            newCanvas.style.position = "absolute";
+            newCanvas.style.transform = `scale(${ScaleFactor}) translate(-50%, -50%)`;
+            newCanvas.style.left = "50%";
+            newCanvas.style.top = "50%";
             DarkScreen.appendChild(newCanvas);
         })
 
