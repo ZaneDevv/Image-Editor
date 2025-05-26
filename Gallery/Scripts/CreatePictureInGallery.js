@@ -18,6 +18,21 @@ function CreatePicture() {
     const InsideText = document.createElement("p");
     MainDiv.appendChild(InsideText);
 
+    const DivWithTools = document.createElement("aside")
+    MainDiv.appendChild(DivWithTools);
+
+    const Trash = document.createElement("img");
+    Trash.src = "../../Images/Gallery/Trash.svg";
+    Trash.alt = "Erase";
+    Trash.title = "Erase";
+    DivWithTools.appendChild(Trash);
+
+    const Edit = document.createElement("img");
+    Edit.src = "../../Images/Gallery/Edit.svg";
+    Edit.alt = "Edit";
+    Edit.title = "Edit";
+    DivWithTools.appendChild(Edit);
+
     ParentGrid.appendChild(MainDiv);
 
     return {
