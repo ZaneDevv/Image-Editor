@@ -3,10 +3,12 @@ const FullScreenCover = document.getElementById("full-screen-cover");
 
 const REGEX_TRANSFORM_EXTRACT_SCALE = /scale\(([^)]+)\)/;
 
+// Creates a new template for the pictures
 function CreatePicture() {
     const MainDiv = document.createElement("div");
     MainDiv.className = "picture";
 
+    // Adding information about the picture
     const InsideDiv = document.createElement("div");
     MainDiv.appendChild(InsideDiv);
 
@@ -22,6 +24,7 @@ function CreatePicture() {
     const DivWithTools = document.createElement("aside")
     MainDiv.appendChild(DivWithTools);
 
+    // Adding buttons
     const Trash = document.createElement("img");
     Trash.src = "../../Images/Gallery/Trash.svg";
     Trash.alt = "Erase";
@@ -47,18 +50,20 @@ function CreatePicture() {
 }
 
 function SetUpGallery() {
-    fetch("./Scripts/ReadSavedFile.php")
+    fetch("./Scripts/ReadSavedFile.php") // Getting all the saved pictures
     .then(response => response.json())
     .then(pictures => {
 
         if (!Array.isArray(pictures)) {  return; }
 
         pictures.forEach(picture => {
+            // Creating the picture on the gallery
             const Elements = CreatePicture();
     
             Elements.Text.innerHTML = picture.Name;
             Elements.InsideCanvas.innerHTML = picture.Content;
     
+            // Fitting image on canvas
             const ComputedStyleImage = getComputedStyle(Elements.InsideCanvas.children[0]);
             const ComputedStyleParentDiv = getComputedStyle(Elements.ImageDiv);
     
@@ -81,10 +86,12 @@ function SetUpGallery() {
 
             let removing = false;
     
+            // View in full screen
             Elements.MainDiv.addEventListener("mouseup", function(){
                 if (removing) { return;}
                 SetDarkScreen();
     
+                // Fittin on screen
                 const ComputedStyleImage = getComputedStyle(Elements.InsideCanvas.children[0]);
                 const ComputedStyleParentDiv = getComputedStyle(DarkScreen);
     
@@ -107,9 +114,11 @@ function SetUpGallery() {
                 DarkScreen.appendChild(newCanvas);
             })
 
+            // Remove picture
             Elements.TrashButton.addEventListener("mouseup", function() {
                 removing = true;
 
+                // Remoe file
                 const formData = new FormData();
                 formData.append("Name", picture.Name);
 
@@ -118,6 +127,7 @@ function SetUpGallery() {
                     body: formData
                 }).catch(error => { console.error('Error:', error); });
 
+                // Remove HTML elements and the picture itself
                 Elements.TrashButton.removeEventListener("mouseup", arguments.callee);
                 Elements.MainDiv.remove();
             })
