@@ -6,8 +6,14 @@ function EnableSave() {
 
     
     function Save() {
+        // Cannot save project with no name
+        if (CurrentProjectName == null) {
+            return;
+        }
+
         const formData = new FormData();
         formData.append("Layers", Canvas.innerHTML);
+        formData.append("Name", CurrentProjectName);
         
         fetch("Scripts/Save.php", {
             method: 'POST',

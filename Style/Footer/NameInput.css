@@ -1,0 +1,16 @@
+footer > input[type="text"] {
+    width: 30%;
+    height: 100%;
+
+    left: 45%;
+    position: absolute;
+
+    background-color: var(--darker-color);
+    color: var(--light-color);
+
+    border-radius: 8px;
+
+    box-shadow: 2px -2px 10px 0 var(--darker-color);
+
+    text-align: center;
+}

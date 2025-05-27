@@ -4,6 +4,7 @@ function EnableProjectEditing() {
     }
 
     EnableFullScreenButton();
+    EnableRename();
 
     /* Enable controls */
     EnableZoom();
