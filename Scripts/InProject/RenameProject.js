@@ -9,7 +9,7 @@ function EnableRename() {
         const formData = new FormData();
         formData.append("Name", Name);
 
-        fetch("Scripts/Save.php", {
+        fetch("Scripts/DoesProjectWithSpecificNameExist.php", {
             method: 'POST',
             body: formData
         })
