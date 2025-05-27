@@ -1,5 +1,6 @@
 function EnableRename() {
     const RenameInput = document.getElementById("rename");
+    let lastName = "";
 
     RenameInput.addEventListener("change", function() {
         const Name = RenameInput.value.replace(/\s+/g, '');
@@ -20,12 +21,13 @@ function EnableRename() {
                 if (data.message == "exists") { // It exists already, so this name is no longer allowed
                     console.log("A project with this same name already exists.");
 
-                    RenameInput.value = "";
+                    RenameInput.value = lastName;
 
                     return;
                 }
 
                 CurrentProjectName = Name;
+                lastName = Name;
 
             }
             else {
