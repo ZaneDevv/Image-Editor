@@ -41,6 +41,8 @@ function CreatePicture() {
         Text: InsideText,
         InsideCanvas: InsideCanvas,
         ImageDiv: InsideDiv,
+        TrashButton: Trash,
+        EditButtun: Edit,
     };
 }
 
@@ -76,8 +78,11 @@ function SetUpGallery() {
             Elements.InsideCanvas.style.top = 0;
             Elements.InsideCanvas.style.boxShadow = "0px 0px 0px 0px #00000000";
             Elements.InsideCanvas.style.position = "absolute";
+
+            let removing = false;
     
             Elements.MainDiv.addEventListener("mouseup", function(){
+                if (removing) { return;}
                 SetDarkScreen();
     
                 const ComputedStyleImage = getComputedStyle(Elements.InsideCanvas.children[0]);
@@ -101,11 +106,26 @@ function SetUpGallery() {
                 newCanvas.style.top = "50%";
                 DarkScreen.appendChild(newCanvas);
             })
+
+            Elements.TrashButton.addEventListener("mouseup", function() {
+                removing = true;
+
+                const formData = new FormData();
+                formData.append("Name", picture.Name);
+
+                fetch("./Scripts/RemovePicture.php", {
+                    method: 'POST',
+                    body: formData
+                }).catch(error => { console.error('Error:', error); });
+
+                Elements.TrashButton.removeEventListener("mouseup", arguments.callee);
+                Elements.MainDiv.remove();
+            })
         });
 
     })
-    .catch(err => {
-        console.error('Error:', err);
+    .catch(error => {
+        console.error('Error:', error);
     });
 }
 

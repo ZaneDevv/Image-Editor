@@ -28,8 +28,8 @@ function EnableSave() {
                 console.error(data.message);
             }
         })
-        .catch(err => {
-            console.error('Error:', err);
+        .catch(error => {
+            console.error('Error:', error);
         });
     }
 
