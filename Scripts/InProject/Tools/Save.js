@@ -37,7 +37,7 @@ function EnableSave() {
 
     window.addEventListener("keyup", function(event) {
         switch(event.key) {
-            case "s":
+            case "g":
                 event.preventDefault();
 
                 if (isControlPressed) {
