@@ -1,0 +1,12 @@
+main > p {
+    position: absolute;
+
+    margin-top: 10%;
+    text-align: center;
+
+    width: 100%;
+
+    font-size: 3rem;
+
+    background-color: transparent;
+}

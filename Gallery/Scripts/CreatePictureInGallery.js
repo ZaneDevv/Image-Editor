@@ -1,6 +1,8 @@
 const ParentGrid = document.getElementById("grid-div");
 const FullScreenCover = document.getElementById("full-screen-cover");
 
+const EmptyGalleryText = document.querySelectorAll("main > p")[0];
+
 const REGEX_TRANSFORM_EXTRACT_SCALE = /scale\(([^)]+)\)/;
 
 // Creates a new template for the pictures
@@ -83,6 +85,8 @@ function SetUpGallery() {
             Elements.InsideCanvas.style.top = 0;
             Elements.InsideCanvas.style.boxShadow = "0px 0px 0px 0px #00000000";
             Elements.InsideCanvas.style.position = "absolute";
+
+            EmptyGalleryText.style.opacity = 0;
 
             let removing = false;
     
