@@ -1,0 +1,38 @@
+# VSCode settings folder
+.vscode/
+
+# VSCodeCounter folder to ignore
+.VSCodeCounter/
+
+# OS system files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Logs and debug files
+*.log
+
+# Environment files (if any)
+.env
+
+# PHP session and cache files
+*.session
+*.cache
+
+# Backup files created by editors
+*~
+*.bak
+*.swp
+
+# Temporary files
+*.tmp
+*.temp
+
+# Batch script outputs or temporary files (optional)
+*.out
+
+# Composer vendor directory (if you ever use Composer)
+vendor/
+
+# Ignore compiled PHP files (if any)
+*.phar
