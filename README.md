@@ -46,6 +46,9 @@ All images and fonts used in this project are sourced from [Google Fonts](https:
 - **Warning on Close/Refresh**:
   - Receive a warning message when trying to close or refresh the window, ensuring you don’t lose any progress.
 
+- **Gallery**
+  - Save the pictures you have made on a gallery
+
 ## How to Use
 
 ### Creating a Project
@@ -145,6 +148,10 @@ Note: The **Full-Screen** button will only be visible if you’ve already create
 ### Warning on Closing or Refreshing
 
 To prevent you from accidentally losing your work, you will receive a warning if you try to close or refresh the window while editing an image.
+
+### Gallery
+
+The progress you have made on a image can be saved by naming the project in a unique way and either clicking on the cloud button on the left-hand side of the screen or pressing **Ctrl + G**. Once you saved your project, it can be seen on the gallery site, where you can access by clicking on the backpack button on top of the screen.
 
 ---
 
