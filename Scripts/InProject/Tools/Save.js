@@ -8,6 +8,7 @@ function EnableSave() {
     function Save() {
         // Cannot save project with no name
         if (CurrentProjectName == null) {
+            AddNotification("Cannot save a project without a specified name.")
             return;
         }
 

@@ -6,7 +6,12 @@ function EnableRename() {
 
     RenameInput.addEventListener("change", function() {
         const Name = RenameInput.value.replace(/\s+/g, '');
-        if (Name === "" || CurrentProjectName == Name) { return; }
+        if (Name === "" || CurrentProjectName == Name) {
+
+            AddNotification("Cannot set an empty name!");
+
+            return;
+        }
 
         // Checking if there's a prject with this name already
         const formData = new FormData();
@@ -23,6 +28,7 @@ function EnableRename() {
                 if (data.message == "exists") { // It exists already, so this name is no longer allowed
                     console.log("A project with this same name already exists.");
 
+                    AddNotification("Cannot set the name of an existent project.");
                     RenameInput.value = lastName;
 
                     return;
