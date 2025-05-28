@@ -13,4 +13,6 @@ footer > input[type="text"] {
     box-shadow: 2px -2px 10px 0 var(--darker-color);
 
     text-align: center;
+
+    opacity: 0;
 }

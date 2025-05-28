@@ -47,7 +47,7 @@ All images and fonts used in this project are sourced from [Google Fonts](https:
   - Receive a warning message when trying to close or refresh the window, ensuring you don’t lose any progress.
 
 - **Gallery**
-  - Save the pictures you have made on a gallery
+  - Save the pictures you have made on a gallery.
 
 ## How to Use
 

@@ -1,5 +1,7 @@
 function EnableRename() {
     const RenameInput = document.getElementById("rename");
+    RenameInput.style.opacity = 1;
+
     let lastName = "";
 
     RenameInput.addEventListener("change", function() {
