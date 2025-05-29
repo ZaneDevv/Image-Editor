@@ -3,6 +3,7 @@
 
 # VSCodeCounter folder to ignore
 .VSCodeCounter/
+Saved/
 
 # OS system files
 .DS_Store

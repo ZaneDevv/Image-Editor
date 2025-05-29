@@ -18,9 +18,9 @@ async function RemoveDarkScreen() {
     DarkScreen.style.opacity = 0;
     DarkScreen.style.visibility = "hidden";
 
-    DarkScreen.children.foreach(element => {
+    for (let element of DarkScreen.children) {
         element.remove();
-    })
+    }
 
     DarkScreen.removeEventListener("mouseup", RemoveDarkScreen);
 }

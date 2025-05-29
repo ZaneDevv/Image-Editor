@@ -89,8 +89,8 @@ function SetUpGallery() {
             for (let element of Elements.InsideCanvas.children) {
                 if (getComputedStyle(element).zIndex !== '1') { continue; }
 
-                const width = parseFloat(getComputedStyle(element).width) * ScaleFactor;
-                const height = parseFloat(getComputedStyle(element).height) * ScaleFactor;
+                const width = parseInt(getComputedStyle(element).width) * ScaleFactor;
+                const height = parseInt(getComputedStyle(element).height) * ScaleFactor;
 
                 Elements.InsideCanvas.style.left = `${-width * 0.5}px`;
                 Elements.InsideCanvas.style.top = `${-height * 0.5}px`;
@@ -128,6 +128,18 @@ function SetUpGallery() {
                 newCanvas.style.transform = `scale(${ScaleFactor}) translate(-50%, -50%)`;
                 newCanvas.style.left = "50%";
                 newCanvas.style.top = "50%";
+
+                for (let element of newCanvas.children) {
+                    if (getComputedStyle(element).zIndex !== '1') { continue; }
+
+                    const width = parseInt(getComputedStyle(element).width) * ScaleFactor;
+                    const height = parseInt(getComputedStyle(element).height) * ScaleFactor;
+
+                    newCanvas.style.marginLeft = `${-width * 0.5}px`;
+                    newCanvas.style.marginTop = `${-height * 0.5}px`;
+
+                    break;
+                }
                 DarkScreen.appendChild(newCanvas);
             })
 
@@ -156,4 +168,4 @@ function SetUpGallery() {
     });
 }
 
-setTimeout(SetUpGallery, 1500);
+setTimeout(SetUpGallery, 1e3);
