@@ -57,6 +57,9 @@ function EnableInsertImage() {
                     // Open file manager to import an image if you have pressed the I button recently ( <= 300 miliseconds before )
                     if (!isControlPressed) { break; }
 
+                    // Cannot insert an image when the user is writing the name
+                    if (IsUserWritingTheNameOfTheProject) { return; }
+
                     const CurrentTime = (new Date()).getTime();
 
                     if (lastTimeIButtonWasPressed > 0) {

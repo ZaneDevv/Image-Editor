@@ -4,6 +4,9 @@ function EnableRename() {
 
     let lastName = "";
 
+    RenameInput.addEventListener("focus", () => IsUserWritingTheNameOfTheProject = true);
+    RenameInput.addEventListener("blur", () => IsUserWritingTheNameOfTheProject = false);
+
     RenameInput.addEventListener("change", function() {
         const Name = RenameInput.value.replace(/\s+/g, '');
         if (Name === "" || CurrentProjectName == Name) {

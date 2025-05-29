@@ -88,6 +88,10 @@ function EnableRotationTool() {
     RotateButton.addEventListener("click", RotateBehaviour);
     window.addEventListener("keyup", function(event) {
         if (event.key != "r") { return; }
+
+        // Cannot rotate en object when the user is writing the name
+        if (IsUserWritingTheNameOfTheProject) { return; }
+
         RotateBehaviour();
     })
 }

@@ -6,6 +6,9 @@ function EnableSave() {
 
     
     function Save() {
+        // Cannot save the project when the user is writing the name
+        if (IsUserWritingTheNameOfTheProject) { return; }
+
         // Cannot save project with no name
         if (CurrentProjectName == null) {
             AddNotification("Cannot save a project without a specified name.")
@@ -24,6 +27,7 @@ function EnableSave() {
         .then(data => {
             if (data.status === "success") {
                 console.log(data.message);
+                AddNotification("Image saved correctly!");
             }
             else {
                 console.error(data.message);

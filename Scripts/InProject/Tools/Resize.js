@@ -170,6 +170,10 @@ function EnableScaleTool() {
     ScaleButton.addEventListener("click", ScaleBehaviour);
     window.addEventListener("keyup", function(event) {
         if (event.key != "s") { return; }
+
+        // Cannot scale en object when the user is writing the name
+        if (IsUserWritingTheNameOfTheProject) { return; }
+
         ScaleBehaviour();
     })
 }

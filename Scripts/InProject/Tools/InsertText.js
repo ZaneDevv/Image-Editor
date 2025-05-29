@@ -326,7 +326,11 @@ function EnableInsertText() {
 
     InsertTextButton.addEventListener("click", InsertText);
     window.addEventListener("keyup", function(event) {
-      if (event.key != "t") { return; }
-      InsertText();  
+        if (event.key != "t") { return; }
+
+        // Cannot inert a text when the user is writing the name
+        if (IsUserWritingTheNameOfTheProject) { return; }
+
+        InsertText();  
     })
 }
