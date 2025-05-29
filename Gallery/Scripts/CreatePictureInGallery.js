@@ -12,6 +12,7 @@ function CreatePicture() {
 
     // Adding information about the picture
     const InsideDiv = document.createElement("div");
+    InsideDiv.style.overflow = "hidden";
     MainDiv.appendChild(InsideDiv);
 
     const InsideCanvas = document.createElement("div");
@@ -66,37 +67,39 @@ function SetUpGallery() {
             Elements.InsideCanvas.innerHTML = picture.Content;
     
             // Fitting image on canvas
-            const ComputedStyleImage = getComputedStyle(Elements.InsideCanvas.children[0]);
-            const ComputedStyleParentDiv = getComputedStyle(Elements.ImageDiv);
+            setTimeout(() => {
+                const ComputedStyleImage = getComputedStyle(Elements.InsideCanvas.children[0]);
+                const ComputedStyleParentDiv = getComputedStyle(Elements.ImageDiv);
+        
+                const ImageWidth = parseInt(ComputedStyleImage.width, 10);
+                const ImageHeight = parseInt(ComputedStyleImage.height, 10);
+        
+                const ParentDivWidth = parseInt(ComputedStyleParentDiv.width, 10);
+                const ParentDivHeight = parseInt(ComputedStyleParentDiv.height, 10);
+                
+                const ScaleX = ParentDivWidth / ImageWidth;
+                const ScaleY = ParentDivHeight / ImageHeight;
+        
+                const ScaleFactor = Max(ScaleX, ScaleY);
+        
+                Elements.InsideCanvas.style.transform = `scale(${ScaleFactor})`;
+                Elements.InsideCanvas.style.left = 0;
+                Elements.InsideCanvas.style.top = 0;
+                Elements.InsideCanvas.style.boxShadow = "0px 0px 0px 0px #00000000";
+                Elements.InsideCanvas.style.position = "absolute";
     
-            const ImageWidth = parseInt(ComputedStyleImage.width, 10);
-            const ImageHeight = parseInt(ComputedStyleImage.height, 10);
+                for (let element of Elements.InsideCanvas.children) {
+                    if (getComputedStyle(element).zIndex !== '1') { continue; }
     
-            const ParentDivWidth = parseInt(ComputedStyleParentDiv.width, 10);
-            const ParentDivHeight = parseInt(ComputedStyleParentDiv.height, 10);
-            
-            const ScaleX = ParentDivWidth / ImageWidth;
-            const ScaleY = ParentDivHeight / ImageHeight;
+                    const width = parseInt(getComputedStyle(element).width) * ScaleFactor;
+                    const height = parseInt(getComputedStyle(element).height) * ScaleFactor;
     
-            const ScaleFactor = Max(ScaleX, ScaleY);
+                    Elements.InsideCanvas.style.left = `${-width * 0.5}px`;
+                    Elements.InsideCanvas.style.top = `${-height * 0.5}px`;
     
-            Elements.InsideCanvas.style.transform = `scale(${ScaleFactor})`;
-            Elements.InsideCanvas.style.left = 0;
-            Elements.InsideCanvas.style.top = 0;
-            Elements.InsideCanvas.style.boxShadow = "0px 0px 0px 0px #00000000";
-            Elements.InsideCanvas.style.position = "absolute";
-
-            for (let element of Elements.InsideCanvas.children) {
-                if (getComputedStyle(element).zIndex !== '1') { continue; }
-
-                const width = parseInt(getComputedStyle(element).width) * ScaleFactor;
-                const height = parseInt(getComputedStyle(element).height) * ScaleFactor;
-
-                Elements.InsideCanvas.style.left = `${-width * 0.5}px`;
-                Elements.InsideCanvas.style.top = `${-height * 0.5}px`;
-
-                break;
-            }
+                    break;
+                }
+            }, 300);
 
 
             EmptyGalleryText.style.opacity = 0;
@@ -168,4 +171,4 @@ function SetUpGallery() {
     });
 }
 
-setTimeout(SetUpGallery, 1e3);
+SetUpGallery();
