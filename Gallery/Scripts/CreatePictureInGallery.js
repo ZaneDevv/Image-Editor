@@ -91,11 +91,14 @@ function SetUpGallery() {
                 for (let element of Elements.InsideCanvas.children) {
                     if (getComputedStyle(element).zIndex !== '1') { continue; }
     
+                    const widthDiv = parseInt(getComputedStyle(Elements.InsideCanvas).width) * ScaleFactor;
+                    const heightDiv = parseInt(getComputedStyle(Elements.InsideCanvas).height) * ScaleFactor;
+
                     const width = parseInt(getComputedStyle(element).width) * ScaleFactor;
                     const height = parseInt(getComputedStyle(element).height) * ScaleFactor;
     
-                    Elements.InsideCanvas.style.left = `${-width * 0.5}px`;
-                    Elements.InsideCanvas.style.top = `${-height * 0.5}px`;
+                    Elements.InsideCanvas.style.left = `${(widthDiv - width) * 0.5}px`;
+                    Elements.InsideCanvas.style.top = `${(heightDiv * 0.5 + height) * -0.5}px`;
     
                     break;
                 }
