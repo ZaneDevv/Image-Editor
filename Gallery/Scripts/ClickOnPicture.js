@@ -7,6 +7,10 @@ const ADDING_TO_ITERATIONS = 1/20;
 const WAIT_TIME = 1/60; 
 
 async function RemoveDarkScreen() {
+    for (let element of DarkScreen.children) {
+        element.remove();
+    }
+    
     Body.style.overflow = "scroll";
 
     for (let t = 0; t <= 1; t += ADDING_TO_ITERATIONS) {
@@ -17,10 +21,6 @@ async function RemoveDarkScreen() {
 
     DarkScreen.style.opacity = 0;
     DarkScreen.style.visibility = "hidden";
-
-    for (let element of DarkScreen.children) {
-        element.remove();
-    }
 
     DarkScreen.removeEventListener("mouseup", RemoveDarkScreen);
 }

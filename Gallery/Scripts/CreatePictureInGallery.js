@@ -134,18 +134,6 @@ function SetUpGallery() {
                 newCanvas.style.transform = `scale(${ScaleFactor}) translate(-50%, -50%)`;
                 newCanvas.style.left = "50%";
                 newCanvas.style.top = "50%";
-
-                for (let element of newCanvas.children) {
-                    if (getComputedStyle(element).zIndex !== '1') { continue; }
-
-                    const width = parseInt(getComputedStyle(element).width) * ScaleFactor;
-                    const height = parseInt(getComputedStyle(element).height) * ScaleFactor;
-
-                    newCanvas.style.marginLeft = `${-width * 0.5}px`;
-                    newCanvas.style.marginTop = `${-height * 0.5}px`;
-
-                    break;
-                }
                 DarkScreen.appendChild(newCanvas);
             })
 
