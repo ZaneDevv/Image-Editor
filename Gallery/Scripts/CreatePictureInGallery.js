@@ -86,6 +86,19 @@ function SetUpGallery() {
             Elements.InsideCanvas.style.boxShadow = "0px 0px 0px 0px #00000000";
             Elements.InsideCanvas.style.position = "absolute";
 
+            for (let element of Elements.InsideCanvas.children) {
+                if (getComputedStyle(element).zIndex !== '1') { continue; }
+
+                const width = parseFloat(getComputedStyle(element).width) * ScaleFactor;
+                const height = parseFloat(getComputedStyle(element).height) * ScaleFactor;
+
+                Elements.InsideCanvas.style.left = `${-width * 0.5}px`;
+                Elements.InsideCanvas.style.top = `${-height * 0.5}px`;
+
+                break;
+            }
+
+
             EmptyGalleryText.style.opacity = 0;
 
             let removing = false;
@@ -143,4 +156,4 @@ function SetUpGallery() {
     });
 }
 
-SetUpGallery();
+setTimeout(SetUpGallery, 1500);

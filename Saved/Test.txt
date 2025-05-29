@@ -1,0 +1,1 @@
+<span contenteditable="false" style="color: rgb(0, 0, 0); left: 277.6px; top: 313px; font-size: 26px; font-family: &quot;Courier New&quot;; position: absolute; transform: translateY(-50%) scale(5.57074); z-index: 2; font-weight: bold; border: 0px;">Test</span>
