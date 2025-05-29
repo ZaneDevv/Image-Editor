@@ -134,6 +134,9 @@ function SetUpGallery() {
                 newCanvas.style.transform = `scale(${ScaleFactor}) translate(-50%, -50%)`;
                 newCanvas.style.left = "50%";
                 newCanvas.style.top = "50%";
+                newCanvas.style.marginLeft = 0;
+                newCanvas.style.marginTop = 0;
+                
                 DarkScreen.appendChild(newCanvas);
             })
 
