@@ -16,7 +16,6 @@ function CreatePicture() {
     MainDiv.appendChild(InsideDiv);
 
     const InsideCanvas = document.createElement("div");
-    InsideCanvas.style.backgroundColor = "#00000000";
     InsideCanvas.style.width = "100%";
     InsideCanvas.style.height = "100%";
     InsideDiv.appendChild(InsideCanvas);
@@ -115,24 +114,51 @@ function SetUpGallery() {
                 SetDarkScreen();
     
                 // Fitting on screen
-                const ComputedStyleImage = getComputedStyle(Elements.InsideCanvas.children[0]);
-                const ComputedStyleParentDiv = getComputedStyle(DarkScreen);
+                const InsideCanvas = document.createElement("div");
+                InsideCanvas.style.width = "100%";
+                InsideCanvas.style.height = "100%";
+                DarkScreen.appendChild(InsideCanvas);
+
+                InsideCanvas.innerHTML = picture.Content;
+
+                setTimeout(() => {
+                    
+                    const ComputedStyleImage = getComputedStyle(InsideCanvas.children[0]);
+                    const ComputedStyleParentDiv = getComputedStyle(InsideCanvas);
+                    
+                    const ImageWidth = parseInt(ComputedStyleImage.width, 10);
+                    const ImageHeight = parseInt(ComputedStyleImage.height, 10);
+                    
+                    const ParentDivWidth = parseInt(ComputedStyleParentDiv.width, 10);
+                    const ParentDivHeight = parseInt(ComputedStyleParentDiv.height, 10);
+                    
+                    const ScaleX = ParentDivWidth / ImageWidth;
+                    const ScaleY = ParentDivHeight / ImageHeight;
+                    
+                    const ScaleFactor = Max(ScaleX, ScaleY);
+
+                    InsideCanvas.style.transform = `scale(${ScaleFactor})`;
+                    InsideCanvas.style.left = 0;
+                    InsideCanvas.style.top = 0;
+                    InsideCanvas.style.boxShadow = "0px 0px 0px 0px #00000000";
+                    InsideCanvas.style.position = "absolute";
+
+                    for (let element of InsideCanvas.children) {
+                        if (getComputedStyle(element).zIndex !== '1') { continue; }
+        
+                        const widthDiv = parseInt(getComputedStyle(InsideCanvas).width) * ScaleFactor;
+                        const heightDiv = parseInt(getComputedStyle(InsideCanvas).height) * ScaleFactor;
     
-                const ImageWidth = parseInt(ComputedStyleImage.width, 10);
-                const ImageHeight = parseInt(ComputedStyleImage.height, 10);
-    
-                const ParentDivWidth = parseInt(ComputedStyleParentDiv.width, 10);
-                const ParentDivHeight = parseInt(ComputedStyleParentDiv.height, 10);
+                        const width = parseInt(getComputedStyle(element).width) * ScaleFactor;
+                        const height = parseInt(getComputedStyle(element).height) * ScaleFactor;
+        
+                        InsideCanvas.style.left = `${(widthDiv - width) * 0.5}px`;
+                        //InsideCanvas.style.top = `${(heightDiv * 0.5 + height) * -0.5}px`;
+        
+                        break;
+                    }
+                }, 200);
                 
-                const ScaleX = ParentDivWidth / ImageWidth;
-                const ScaleY = ParentDivHeight / ImageHeight;
-    
-                const ScaleFactor = Max(ScaleX, ScaleY);
-    
-                const newCanvas = Elements.InsideCanvas.cloneNode(true);
-                newCanvas.style.transform = `scale(${ScaleFactor}) translateX(25%)`;
-                
-                DarkScreen.appendChild(newCanvas);
             })
 
             // Remove picture
