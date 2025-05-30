@@ -147,17 +147,13 @@ function SetUpGallery() {
                         if (getComputedStyle(element).zIndex !== '1') { continue; }
         
                         const widthDiv = parseInt(getComputedStyle(InsideCanvas).width) * ScaleFactor;
-                        const heightDiv = parseInt(getComputedStyle(InsideCanvas).height) * ScaleFactor;
-    
                         const width = parseInt(getComputedStyle(element).width) * ScaleFactor;
-                        const height = parseInt(getComputedStyle(element).height) * ScaleFactor;
         
                         InsideCanvas.style.left = `${(widthDiv - width) * 0.5}px`;
-                        //InsideCanvas.style.top = `${(heightDiv * 0.5 + height) * -0.5}px`;
         
                         break;
                     }
-                }, 200);
+                }, 20);
                 
             })
 
