@@ -114,7 +114,7 @@ function SetUpGallery() {
                 if (removing) { return;}
                 SetDarkScreen();
     
-                // Fittin on screen
+                // Fitting on screen
                 const ComputedStyleImage = getComputedStyle(Elements.InsideCanvas.children[0]);
                 const ComputedStyleParentDiv = getComputedStyle(DarkScreen);
     
@@ -130,12 +130,7 @@ function SetUpGallery() {
                 const ScaleFactor = Max(ScaleX, ScaleY);
     
                 const newCanvas = Elements.InsideCanvas.cloneNode(true);
-                newCanvas.style.position = "absolute";
-                newCanvas.style.transform = `scale(${ScaleFactor}) translate(-50%, -50%)`;
-                newCanvas.style.left = "50%";
-                newCanvas.style.top = "50%";
-                newCanvas.style.marginLeft = 0;
-                newCanvas.style.marginTop = 0;
+                newCanvas.style.transform = `scale(${ScaleFactor}) translateX(25%)`;
                 
                 DarkScreen.appendChild(newCanvas);
             })
