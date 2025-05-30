@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6,
 p, b, i, strong, em, label,
 span, a, button, input, img {
     color: var(--light-color);
-    font-family: "Dancing Script", cursive;
+    font-family: 'DancingScript', sans-serif;
     text-decoration: none;
 }
 
